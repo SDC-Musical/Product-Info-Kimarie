@@ -10,7 +10,6 @@ const product = new mongoose.Schema({
     age: String,
     player_Count: String,
   },
-
   specs: {
     part_Number: String,
     GTIN: Number,
