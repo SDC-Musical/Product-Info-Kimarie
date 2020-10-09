@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Product } = require('./database/index.js', {
+const { Product } = require('./database/models/product.js', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -21,14 +21,14 @@ const categoryName = ['Lorem', 'ipsum', 'dolor', 'sit', 'amet'];
 
 const playerCount = ['1 Player', '2 Player', '3 Player', '4 Player', '5 Player', '6 Player'];
 const partNumber = ['Lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'Sed', 'volutpat', 'feugiat', 'consequat', 'Donec', 'id', 'faucibus', 'ligula', 'Maecenas', 'lobortis', 'laoreet', 'maximus', 'Donec', 'vel', 'nunc', 'mi', 'Nam', 'rutrum', 'rutrum', 'convallis', 'Donec', 'tempus', 'gravida', 'risus', 'laoreet', 'elementum', 'Fusce', 'congue', 'rhoncus', 'sollicitudin', 'Nunc', 'quis'];
-function rand(min, max) {
+function randNum(min, max) {
   const randomNum = Math.random() * (max - min) + min;
   return Math.floor(randomNum);
 }
 function gtinStr(num) {
   let gtStr = '';
   while (gtStr.length < num) {
-    gtStr = (rand(0, 9).toString()) + gtStr;
+    gtStr += (randNum(0, 9).toString());
   }
   return gtStr;
 }
@@ -36,16 +36,16 @@ function gtinStr(num) {
 function createNewProducts() {
   for (let i = 1; i < 101; i += 1) {
     const productObject = {};
-    productObject.product_Id = i;
-    productObject.description = descriptionChoice[rand(0, 24)];
+    productObject.product_id = i;
+    productObject.description = descriptionChoice[randNum(0, 24)];
     productObject.title = titleChoice[i - 1];
-    productObject.brand = brandName[rand(1, 8)];
+    productObject.brand = brandName[randNum(1, 8)];
     productObject.category = {};
-    productObject.category.name = categoryName[rand(0, 4)];
-    productObject.category.age = (rand(3, 18)).toString();
-    productObject.category.player_Count = playerCount[rand(0, 6)];
+    productObject.category.name = categoryName[randNum(0, 4)];
+    productObject.category.age = (randNum(3, 18)).toString();
+    productObject.category.playerCount = playerCount[randNum(0, 6)];
     productObject.specs = {};
-    productObject.specs.part_Number = partNumber[rand(0, 40)] + gtinStr(4);
+    productObject.specs.part_Number = partNumber[randNum(0, 40)] + gtinStr(4).toString();
     productObject.specs.GTIN = gtinStr(14);
     products.push(productObject);
   }
