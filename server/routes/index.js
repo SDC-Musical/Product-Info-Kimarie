@@ -1,16 +1,12 @@
-const express = require('express');
+const express = require('express').Router();
+const controller = require('../controllers/index.js');
 
 const router = express.Router();
 /* ----------------------- Internal---------- */
-router.get('title/:product_Id', (req, res) => {
-  // if(req.query)
-  // helper(req)
-  // get data from mongodb and send back to client
-  res.send('hello');
-});
-router.get('brand/:product_Id', (req, res) => {
-  res.send('brand');
-});
+router.get('title/:product_Id', controller.title.get);
+router.get('brand/:product_Id', controller.message.post);
 
 /* ----------------------- External---------- */
 router.get('reviews/product_id');
+
+module.exports = router;
