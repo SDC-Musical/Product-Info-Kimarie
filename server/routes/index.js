@@ -4,7 +4,7 @@ const controller = require('../controllers/index.js');
 const router = express.Router();
 /* ----------------------- Internal---------- */
 router.get('title/:product_Id', controller.title.get);
-router.get('brand/:product_Id', controller.message.post);
+router.get('brand/:product_Id', controller.brand.get);
 
 /* ----------------------- External---------- */
 router.get('reviews/product_id');
