@@ -14,3 +14,5 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongoose connected successfully');
 });
+
+module.exports.db = db;

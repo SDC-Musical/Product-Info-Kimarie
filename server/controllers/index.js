@@ -1,1 +1,2 @@
-const models = require('../public/helpers/index.js');
+const models = require('../../public/helpers/index.js');
+
