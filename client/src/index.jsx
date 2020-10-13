@@ -1,34 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Title from './components/Title';
+import Description from './components/Description';
+import Specifications from './components/Specifications';
 
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      value: '',
+
     };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    const { value } = event.target;
-    this.setState(() => ({
-      value,
-    }));
   }
 
   render() {
     return (
-      <form>
-        <div> Hello </div>
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-      </form>
+
+      <div>
+        <Title />
+        <Description />
+        <Specifications />
+      </div>
+
     );
   }
 }

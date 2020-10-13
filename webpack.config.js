@@ -7,7 +7,7 @@ const node = path.join(__dirname, 'node_modules');
 module.exports = {
   entry: `${src}/index.jsx`,
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle-product-information-service.js',
     path: dist,
   },
   resolve: {
