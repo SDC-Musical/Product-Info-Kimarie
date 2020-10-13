@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Title from '../components/Title';
-// import Description from '../components/Description';
-// import Specifications from '../components/Specifications';
+import Title from '../components/Title.jsx';
+import Description from '../components/Description.jsx';
+import Specifications from '../components/Specifications.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -17,10 +17,9 @@ class App extends React.Component {
     return (
 
       <div>
-        hello
-        {/* <Title />
+        <Title />
         <Description />
-        <Specifications /> */}
+        <Specifications />
       </div>
 
     );

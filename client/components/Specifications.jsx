@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Specifications = () => (
-  <div className="specifications">
+  <div>
     <h1>Specifications</h1>
     <h2>Universal Product Identifiers</h2>
     <ul>
