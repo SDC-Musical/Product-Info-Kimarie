@@ -1,12 +1,11 @@
-const express = require('express').Router();
-const controller = require('../controllers/index.js');
+const router = require('express').Router();
+const controller = require('../controllers');
 
-const router = express.Router();
 /* ----------------------- Internal---------- */
-router.get('title/:product_Id', controller.title.get);
-router.get('brand/:product_Id', controller.brand.get);
+router.get('/title/:product_id', controller.title);
+// router.get('brand/:product_id', controller.brand);
 
 /* ----------------------- External---------- */
-router.get('reviews/product_id');
+// router.get('reviews/product_id');
 
 module.exports = router;
