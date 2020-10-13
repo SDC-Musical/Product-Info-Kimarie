@@ -14,22 +14,31 @@ const title = (req, res) => {
   console.log(id);
   Product.findOne({ product_id: id }, 'name title description')
     .then((result) => {
-      res.send(`title:${result}`);
+      res.status(200).send(`title:${result}`);
     })
     .catch((err) => {
       console.log(err);
+      res.status(500).send('Something Broke!');
     });
-// models.getTitle((err, title) => {
-//   if (err) {
-//     console.log(err);
-//     res.status(500).send('Something Broke!');
-//   } else {
-//     res.status(200).send(title);
-//   }
-// });
 };
 
+const brand = (req, res) => {
+  const brandName = req.params.brand.split(':').join('').toString();
+
+  Product.find({ brand: brandName })
+    .then((result) => {
+      res.status(200).send(`brand:${result}`);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send('Something Broke!');
+    });
+};
 module.exports = {
   title,
-  // brand
+  brand,
 };
+
+/* future addition - query params  - if req.params.length === 0;
+req.query = id  - routes and test must change
+*/

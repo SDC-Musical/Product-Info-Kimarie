@@ -3,7 +3,7 @@ const controller = require('../controllers');
 
 /* ----------------------- Internal---------- */
 router.get('/title/:product_id', controller.title);
-// router.get('brand/:product_id', controller.brand);
+router.get('/brand/:brand', controller.brand);
 
 /* ----------------------- External---------- */
 // router.get('reviews/product_id');
