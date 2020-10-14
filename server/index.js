@@ -9,10 +9,12 @@ const client = path.join(__dirname, '/../client/dist');
 app.use(express.static(client));
 app.use('/api', router);
 
-app.get('/hello', (req, res) => {
-  res.send('Working Path');
-});
-// in future app.get /, titlerouter....
+// app.get('/hello', (req, res) => {
+//   res.send('Working Path');
+// });
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}!`);
 });
+
+module.exports = app;
