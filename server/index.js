@@ -7,7 +7,7 @@ const app = express();
 const client = path.join(__dirname, '/../client/dist');
 
 app.use(express.static(client));
-app.use('/productinfo', router);
+app.use('/api', router);
 
 app.get('/hello', (req, res) => {
   res.send('Working Path');
