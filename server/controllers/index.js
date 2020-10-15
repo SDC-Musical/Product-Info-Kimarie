@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/Product')
 
 const title = (req, res) => {
   const id = req.params.product_id.split(':').join('');
-  Product.findOne({ product_id: id }, 'name title description')
+  Product.find({ product_id: id })
     .then((result) => {
       res.status(200).send(`title:${result}`);
     })
