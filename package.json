@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -d --watch --display-error-details",
     "start": "nodemon server/index.js",
     "seed": "node seedScript.js"
   },
@@ -26,6 +26,7 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "babel-jest": "^26.3.0",
     "chai": "^4.2.0",

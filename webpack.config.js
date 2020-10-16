@@ -7,7 +7,7 @@ const node = path.join(__dirname, 'node_modules');
 module.exports = {
   entry: `${src}/index.jsx`,
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle-product-information-service.js',
     path: dist,
   },
   resolve: {
@@ -16,9 +16,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
-        include: src,
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-react',
+            '@babel/preset-env'],
+        },
+
       },
     ],
   },
