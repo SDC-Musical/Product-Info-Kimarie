@@ -20,5 +20,7 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'linebreak-style': 0,
+    'import/extensions':
+    ['error', 'always', { ignorePackages: true }],
   },
 };
