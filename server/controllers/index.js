@@ -13,6 +13,8 @@ const title = (req, res) => {
   const id = req.params.product_id.split(':').join('');
   Product.find({ product_id: id })
     .then((result) => {
+      delete result[0]._id
+
       res.status(200).send(`title:${result}`);
     })
     .catch((err) => {
@@ -26,6 +28,7 @@ const brand = (req, res) => {
 
   Product.find({ brand: brandName })
     .then((result) => {
+      console.log(result);
       res.status(200).send(`brand:${result}`);
     })
     .catch((err) => {
