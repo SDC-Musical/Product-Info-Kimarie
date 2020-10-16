@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const lodash = require('lodash');
 
 const { Product } = require('../../database/models/product.js', {
   useNewUrlParser: true,
@@ -13,9 +14,10 @@ const title = (req, res) => {
   const id = req.params.product_id.split(':').join('');
   Product.find({ product_id: id })
     .then((result) => {
-      delete result[0]._id
-
-      res.status(200).send(`title:${result}`);
+      const productObj = result[0]._doc;
+      console.log(productObj);
+      const productInfo = lodash.omit(productObj, ['_id', '__v']);
+      res.status(200).send(productInfo);
     })
     .catch((err) => {
       console.log(err);
