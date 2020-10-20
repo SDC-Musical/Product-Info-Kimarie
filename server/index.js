@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', router);
 app.use('/products/:product_id', express.static(client));
-
+app.use('/', express.static(client));
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}!`);
 });
