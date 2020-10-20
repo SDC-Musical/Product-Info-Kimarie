@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Title = () => (
+const Title = ({ title }) => (
   <div>
-    <h1>Product</h1>
-    <h3> rating </h3>
+    {' '}
+    {title}
   </div>
 );
 
+Title.propTypes = {
+  title: PropTypes.string,
+};
+Title.defaultProps = {
+  title: null,
+};
 export default Title;
