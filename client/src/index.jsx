@@ -19,7 +19,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const id = window.location.pathname.substring(14) || 1;
+    let id = window.location.pathname.substring(10) || '1';
+    id = id.replace('/', '');
+    console.log(id);
     fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {

@@ -9,7 +9,7 @@ const Description = ({ description, categoryBrand }) => (
         <Header
           categoryBrand={item}
           // eslint-disable-next-line react/no-array-index-key
-          index={index}
+          key={index}
         />
       ))}
     </ul>
@@ -19,7 +19,7 @@ const Description = ({ description, categoryBrand }) => (
 
 Description.propTypes = {
   description: PropTypes.string,
-  categoryBrand: PropTypes.arrayOf,
+  categoryBrand: PropTypes.arrayOf(PropTypes.string),
 };
 
 Description.defaultProps = {

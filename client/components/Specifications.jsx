@@ -1,33 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Body from './Body.jsx';
 
 const Specifications = ({ specsParts, specsGTIN, brand }) => (
   <div>
     <h1>Specifications</h1>
     <h2>Universal Product Identifiers</h2>
-    <tr>
-      <td>
-        {' '}
-        Brand
-        {' '}
-        {brand}
-        {' '}
-      </td>
-      <td>
-        {' '}
-        PartNumbers
-        {' '}
-        {specsParts}
-        {' '}
-      </td>
-      <td>
-        {' '}
-        GTIN
-        {' '}
-        {specsGTIN}
-        {' '}
-      </td>
-    </tr>
+    <Body
+      specsParts={specsParts}
+      specsGTIN={specsGTIN}
+      brand={brand}
+    />
   </div>
 );
 
