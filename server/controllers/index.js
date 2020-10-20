@@ -21,6 +21,7 @@ const title = (req, res) => {
     });
 };
 
+// brand route is broken....
 const brand = (req, res) => {
   const brandName = req.params.brand.split(':').join('').toString();
 
@@ -33,7 +34,7 @@ const brand = (req, res) => {
       for (let i = 0; i < brandObj.length; i + 1) {
         brandInfo.push(lodash.omit(brandObj[i], ['_id', '__v']));
       }
-
+      console.log(brandInfo);
       res.status(200).send(brandInfo);
     })
     .catch((err) => {

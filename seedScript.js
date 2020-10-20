@@ -68,3 +68,9 @@ const seed = async () => {
 };
 
 seed();
+module.exports = {
+  insertProducts,
+  createNewProducts,
+  gtinStr,
+  randNum,
+};
