@@ -53,20 +53,27 @@ class App extends React.Component {
     const { categoryBrand } = this.state;
     return (
       <div>
-        <Title title={title} />
-        <Description
-          description={description}
-          categoryBrand={categoryBrand}
-        />
-        <Specifications
-          specsParts={specsParts}
-          specsGTIN={specsGTIN}
-          brand={brand}
-        />
+        <div>
+          <Title title={title} />
+        </div>
+        <div>
+          <Description
+            description={description}
+            categoryBrand={categoryBrand}
+          />
+        </div>
+        <div>
+          <Specifications
+            specsParts={specsParts}
+            specsGTIN={specsGTIN}
+            brand={brand}
+          />
+        </div>
+
       </div>
 
     );
   }
 }
-
+// separate div elements for each component
 ReactDOM.render(<App />, document.getElementById('product-information') || document.createElement('div'));
