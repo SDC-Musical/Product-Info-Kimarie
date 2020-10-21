@@ -10,7 +10,7 @@
     "react-dev": "webpack -d --watch --display-error-details",
     "start": "nodemon server/index.js",
     "seed": "node seedScript.js",
-    "test": "mocha _test_/seed.spec/seed.spec.js --exit; mocha _test_/server.spec/server.spec.js --exit",
+    "test": "nyc mocha _test_/seed.spec/seed.spec.js --exit; nyc mocha _test_/server.spec/server.spec.js --exit",
     "coverage": "istanbul cover _mocha index.test.js -x *.test.js",
     "showcoverage": "xdg-open coverage/lcov-report/index.html"
   },
@@ -52,6 +52,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "istanbul": "^0.4.5",
     "mocha": "^8.2.0",
+    "nyc": "^15.1.0",
     "supertest": "^5.0.0"
   },
   "version": "1.0.0",
