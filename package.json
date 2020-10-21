@@ -10,9 +10,8 @@
     "react-dev": "webpack -d --watch --display-error-details",
     "start": "nodemon server/index.js",
     "seed": "node seedScript.js",
-    "test": "nyc mocha _test_/seed.spec/seed.spec.js --exit; nyc mocha _test_/server.spec/server.spec.js --exit",
-    "coverage": "istanbul cover _mocha index.test.js -x *.test.js",
-    "showcoverage": "xdg-open coverage/lcov-report/index.html"
+    "test": "nyc --reporter=html --reporter=text mocha _test_/seed.spec/seed.spec.js --exit; nyc --reporter=html --reporter=text mocha _test_/server.spec/server.spec.js --exit",
+    "coverage": "nyc report --reporter=text-lcov"
   },
   "dependencies": {
     "-": "0.0.1",
