@@ -10,7 +10,7 @@
     "react-dev": "webpack -d --watch --display-error-details",
     "start": "nodemon server/index.js",
     "seed": "node seedScript.js",
-    "test": "mocha _test_/seed.spec/seed.spec.js",
+    "test": "mocha _test_/seed.spec/seed.spec.js --exit; mocha _test_/server.spec/server.spec.js --exit",
     "coverage": "istanbul cover _mocha index.test.js -x *.test.js",
     "showcoverage": "xdg-open coverage/lcov-report/index.html"
   },
