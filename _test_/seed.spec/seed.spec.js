@@ -26,7 +26,7 @@ describe('Database is successfully seeded', () => {
     const str1 = helper.gtinStr(num1);
     assert.equal(num1, str1.length);
   });
-  it('it should have 100 products created ', () => {
+  it('it should have 100 products created after seeding', () => {
     let count = 0;
     Product.countDocuments()
       .then((result) => {

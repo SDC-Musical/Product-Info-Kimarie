@@ -29,21 +29,4 @@ describe('test', () => {
       brand: 'ipsum',
     };
   });
-  it ('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App/>, div)
-  })
-
-
-  it('Title component is exist', () => {
-    const wrapper = shallow(<Title title={sampleData.title} />);
-    expect(wrapper).toHaveLength(1);
-  });
-
-  it('Title component has all titles saved', () => {
-    const wrapper = shallow(<Title title={sampleData.title} />);
-    const title = wrapper.state().title;
-    expect(title).toEqual(sampleData.title);
-  });
-  });
 });
