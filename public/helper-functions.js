@@ -1,3 +1,8 @@
+function randNum(min, max) {
+  const randomNum = Math.random() * (max - min) + min;
+  return Math.floor(randomNum);
+}
+
 module.exports = {
   getType(obj) {
     if (Array.isArray(obj)) return 'array';
@@ -11,15 +16,12 @@ module.exports = {
     const keys = Object.getOwnPropertyNames(json);
     return keys;
   },
+  randNum,
   gtinStr(num) {
     let gtStr = '';
     while (gtStr.length < num) {
       gtStr += (randNum(0, 9).toString());
     }
     return gtStr;
-  },
-  randNum(min, max) {
-    const randomNum = Math.random() * (max - min) + min;
-    return Math.floor(randomNum);
   },
 };

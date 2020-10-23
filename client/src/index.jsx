@@ -45,12 +45,9 @@ class App extends React.Component {
   }
 
   render() {
-    const { title } = this.state;
-    const { description } = this.state;
-    const { brand } = this.state;
-    const { specsParts } = this.state;
-    const { specsGTIN } = this.state;
-    const { categoryBrand } = this.state;
+    const {
+      title, description, brand, specsParts, specsGTIN, categoryBrand,
+    } = this.state;
     return (
       <div>
         <div>
