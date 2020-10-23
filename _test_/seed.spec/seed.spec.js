@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { expect, assert } = require('chai');
-const seed = require('../../seedScript.js');
+const helper = require('../../public/helper-functions.js');
 
 const { Product } = require('../../database/models/product.js', {
   useNewUrlParser: true,
@@ -17,13 +17,13 @@ describe('Database is successfully seeded', () => {
   it('it should return random number between min and max (max and min inclusive)', () => {
     const min = 5;
     const max = 10;
-    const num = seed.randNum(min, max);
+    const num = helper.randNum(min, max);
     assert.isAtLeast(num, min);
     assert.isAtMost(num, max);
   });
   it('it should return random string of n of length n', () => {
     const num1 = 5;
-    const str1 = seed.gtinStr(num1);
+    const str1 = helper.gtinStr(num1);
     assert.equal(num1, str1.length);
   });
   it('it should have 100 products created ', () => {

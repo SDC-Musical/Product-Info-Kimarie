@@ -11,4 +11,15 @@ module.exports = {
     const keys = Object.getOwnPropertyNames(json);
     return keys;
   },
+  gtinStr(num) {
+    let gtStr = '';
+    while (gtStr.length < num) {
+      gtStr += (randNum(0, 9).toString());
+    }
+    return gtStr;
+  },
+  randNum(min, max) {
+    const randomNum = Math.random() * (max - min) + min;
+    return Math.floor(randomNum);
+  },
 };
