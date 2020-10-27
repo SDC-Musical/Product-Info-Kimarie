@@ -1,0 +1,38 @@
+image: node:latest
+
+stages:
+  - build
+  - test
+
+cache:
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm install
+
+test_seeding:
+  stage: test
+  script:
+    - npm run test seed
+  artifacts:
+    reports:
+        junit: artifacts/junit-*.xml
+
+test_api:
+  stage: test
+  script:
+    - npm run test server
+  artifacts:
+    reports:
+        junit: artifacts/junit-*.xml
+
+test_client:
+  stage: test
+  script:
+    - npm run test client
+  artifacts:
+    reports:
+        junit: artifacts/junit-*.xml

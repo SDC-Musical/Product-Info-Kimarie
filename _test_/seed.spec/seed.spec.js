@@ -6,6 +6,7 @@ const { Product } = require('../../database/models/product.js', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+// test by seeding a database first with sample data , then checking if its seeded.
 
 describe('Database is successfully seeded', () => {
   before((done) => {

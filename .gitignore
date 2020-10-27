@@ -25,4 +25,6 @@ coverage
 build/
 dist/
 
+# Config Files
+config.js
 

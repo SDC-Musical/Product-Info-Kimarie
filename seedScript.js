@@ -35,6 +35,7 @@ function createNewProducts() {
     productObject.category.age = (helper.randNum(3, 18)).toString();
     productObject.category.playerCount = playerCount[helper.randNum(0, 6)];
     productObject.specs = {};
+    // eslint-disable-next-line max-len
     productObject.specs.part_Number = partNumber[helper.randNum(0, 40)] + helper.gtinStr(4).toString();
     productObject.specs.GTIN = helper.gtinStr(14);
     products.push(productObject);

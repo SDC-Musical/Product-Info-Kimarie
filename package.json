@@ -11,6 +11,9 @@
     "start": "nodemon server/index.js",
     "seed": "node seedScript.js",
     "test": "nyc --reporter=html --reporter=text mocha _test_/seed.spec/seed.spec.js --exit; nyc --reporter=html --reporter=text mocha _test_/server.spec/server.spec.js --exit",
+    "test seed": "nyc --reporter=html --reporter=text mocha _test_/seed.spec/seed.spec.js --exit",
+    "test server": "nyc --reporter=html --reporter=text mocha _test_/server.spec/server.spec.js --exit",
+    "test client": "nyc --reporter=html --reporter=text mocha _test_/client.spec/server.spec.js --exit",
     "coverage": "nyc report --reporter=text-lcov"
   },
   "dependencies": {
