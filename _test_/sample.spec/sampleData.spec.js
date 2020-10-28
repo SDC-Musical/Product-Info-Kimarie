@@ -5,7 +5,6 @@ const sampleData = [
       part_Number: 'laoreet7056',
       GTIN: 31704482802446,
     },
-    product_id: 2,
     description: 'Lorem ipsum dolor sit amet',
     title: 'ipsum',
     brand: 'ipsum',
@@ -89,7 +88,7 @@ const sampleData = [
   },
 
   {
-    product_id: 10, description: 'Etiam maximus nulla tristique pulvinar auctor', title: 'tristique', brand: 'dolor', category: { name: 'sit', age: '11' }, specs: { part_Number: 'Donec4577', GTIN: 65654871130861 },
+    description: 'Etiam maximus nulla tristique pulvinar auctor', title: 'tristique', brand: 'dolor', category: { name: 'sit', age: '11' }, specs: { part_Number: 'Donec4577', GTIN: 65654871130861 },
   },
   {
     description: 'Lorem ipsum dolor sit amet',

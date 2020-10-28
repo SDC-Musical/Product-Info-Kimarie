@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Title from '../components/Title.jsx';
 import Description from '../components/Description.jsx';
 import Specifications from '../components/Specifications.jsx';
+import staticObj from './Static.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,6 +42,20 @@ class App extends React.Component {
       })
       .catch((err) => {
         console.log('Unable to complete request: ', err);
+        const data = staticObj[id - 1];
+        const containerObj = data.category;
+        containerObj.brand = data.brand;
+        const categoryBrand = Object.values(containerObj);
+        const specsParts = data.specs.part_Number;
+        const specsGTIN = data.specs.GTIN;
+        this.setState({
+          title: data.title,
+          description: data.description,
+          brand: data.brand,
+          categoryBrand,
+          specsParts,
+          specsGTIN,
+        });
       });
   }
 
