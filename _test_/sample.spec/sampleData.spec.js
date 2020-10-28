@@ -104,4 +104,4 @@ const sampleData = [
 
 ];
 
-export default sampleData;
+export { sampleData as default };

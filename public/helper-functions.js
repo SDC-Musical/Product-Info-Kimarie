@@ -1,3 +1,8 @@
+const { Product } = require('../database/models/product.js', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 function randNum(min, max) {
   const randomNum = Math.random() * (max - min) + min;
   return Math.floor(randomNum);
@@ -11,8 +16,6 @@ module.exports = {
     return 'other';
   },
   getObjDetails(json) {
-    // for each key
-    // we can push into separate array of separate objects
     const keys = Object.getOwnPropertyNames(json);
     return keys;
   },
@@ -23,5 +26,14 @@ module.exports = {
       gtStr += (randNum(0, 9).toString());
     }
     return gtStr;
+  },
+  insertProducts(arr) {
+    arr.forEach((item) => {
+      new Product(item).save((err) => {
+        if (err) {
+          console.log('Error: ', err);
+        }
+      });
+    });
   },
 };

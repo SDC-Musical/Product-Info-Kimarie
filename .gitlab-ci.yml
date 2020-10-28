@@ -16,7 +16,7 @@ build:
 test_seeding:
   stage: test
   script:
-    - npm run test seed
+    - npm run test:seed
   artifacts:
     reports:
         junit: artifacts/junit-*.xml
@@ -24,7 +24,7 @@ test_seeding:
 test_api:
   stage: test
   script:
-    - npm run test server
+    - npm run test:server
   artifacts:
     reports:
         junit: artifacts/junit-*.xml
@@ -32,7 +32,7 @@ test_api:
 test_client:
   stage: test
   script:
-    - npm run test client
+    - npm run test:client
   artifacts:
     reports:
         junit: artifacts/junit-*.xml
