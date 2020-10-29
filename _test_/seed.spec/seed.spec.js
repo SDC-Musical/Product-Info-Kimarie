@@ -4,11 +4,6 @@ const mongoose = require('mongoose');
 const { expect, assert } = require('chai');
 const helper = require('../../public/helper-functions.js');
 
-const { Product } = require('../../database/models/product.js', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
 describe('Database seeding functions are working', () => {
   before((done) => {
     mongoose.connect('mongodb://localhost/Product')
@@ -71,9 +66,3 @@ describe('Database seeding functions are working', () => {
     expect(result).to.equal(12);
   });
 });
-/*
-Test needs to be added with mock data
-// create new product is creating an product object
-// it('Document should be prepared for inserting'
-// it('Document should be saved in database')
-*/

@@ -7,7 +7,7 @@ const { Product } = require('../../database/models/product.js', {
 
 const title = (req, res) => {
   const id = req.params.product_id.split(':').join('');
-  Product.find({ product_id: 300 })
+  Product.find({ product_id: id })
     .then((result) => {
       // eslint-disable-next-line no-underscore-dangle
       const productObj = result[0]._doc;
