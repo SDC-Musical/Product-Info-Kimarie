@@ -70,6 +70,7 @@ describe('Server API Routes', () => {
       .then(() => done());
   });
   after((done) => {
+    // eslint-disable-next-line no-undef
     server.close();
     console.log('Closed Server!');
     Product.deleteMany({})
