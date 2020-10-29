@@ -42,18 +42,8 @@ function createNewProducts() {
   }
 }
 
-// function insertProducts() {
-//   products.forEach((prod) => {
-//     new Product(prod).save((err) => {
-//       if (err) {
-//         console.log('Error: ', err);
-//       }
-//     });
-//   });
-// }
-
 const seed = async () => {
-  await Product.deleteMany({});
+  await helper.delete();
   await createNewProducts();
   await helper.insertProducts(products);
 };
