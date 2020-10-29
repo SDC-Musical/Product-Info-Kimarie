@@ -1,7 +1,6 @@
-import sampleData from '../sample.spec/sampleData.spec.js';
-
 const mongoose = require('mongoose');
 const { expect, assert } = require('chai');
+const sampleData = require('../sample.spec/sampleData.spec.js');
 const helper = require('../../public/helper-functions.js');
 const seed = require('..');
 
