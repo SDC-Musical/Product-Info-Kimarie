@@ -2,22 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Body = ({ specsParts, specsGTIN, brand }) => (
-  <table>
-    <tr>
-      <td>
-        Brand
-        {brand}
-      </td>
-      <td>
-        PartNumbers
-        {specsParts}
-      </td>
-      <td>
-        GTIN
-        {specsGTIN}
-      </td>
-    </tr>
-  </table>
+
+  <div>
+    <ul>
+      Brand
+      {' '}
+      {brand}
+    </ul>
+    <ul>
+      PartNumbers
+      {' '}
+      {specsParts}
+    </ul>
+    <ul>
+      GTIN
+      {' '}
+      {specsGTIN}
+    </ul>
+
+  </div>
 );
 
 Body.propTypes = {
