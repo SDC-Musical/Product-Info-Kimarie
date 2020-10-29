@@ -48,12 +48,11 @@ describe('Server API Routes', () => {
       })
       .then(() => done());
   });
-  it('it should have a status code 404 when path is incorrect', (done) => {
-    const id = 2;
+  it('it should have a status code 404 when path is incorrect and empty response object', (done) => {
     request(app)
-      .get(`/api/production/`)
+      .get('/production/')
       .expect(404)
-      .expect('Content-Type', 'text/html; charset=utf-8')
+      .expect('Content-Type', 'text/html; charset=UTF-8')
       .then((res) => {
         assert.equal('{}', JSON.stringify(res.body));
       })

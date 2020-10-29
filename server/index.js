@@ -19,10 +19,13 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', router);
 app.use('/products/:product_id', express.static(client));
-//app.use('/', express.static(client));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, './../client/dist/index.html'));
-// });
+// app.use('/', express.static(client));
+app.get('*', (req, res) => {
+  if(Object.keys(req.params)[0] !== 'product_id') {
+    res.status(404);
+  }
+  res.sendFile(path.join(__dirname, './../client/dist/index.html'));
+});
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}!`);
 });
