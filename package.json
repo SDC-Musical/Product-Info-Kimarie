@@ -14,7 +14,7 @@
     "test": "nyc --reporter=html --reporter=text mocha --require esm _test_/seed.spec/seed.spec.js --exit; nyc --reporter=html --reporter=text mocha _test_/server.spec/server.spec.js --exit",
     "test:seed": "nyc --reporter=html --reporter=text mocha --require esm _test_/seed.spec/seed.spec.js --exit",
     "test:server": "nyc --reporter=html --reporter=text mocha _test_/server.spec/server.spec.js --exit",
-    "test:client": "nyc --reporter=html --reporter=text mocha _test_/client.spec/server.spec.js --exit",
+    "test:client": "nyc --reporter=html --reporter=text mocha --require esm _test_/client.spec/client.spec.js --exit",
     "coverage": "nyc report --reporter=text-lcov"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "fetch": "^1.1.0",
+    "jsdom": "^16.4.0",
     "lodash": "^4.17.20",
     "mongoose": "^5.10.7",
     "prop-types": "^15.7.2",
