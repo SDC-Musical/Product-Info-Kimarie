@@ -24,6 +24,7 @@ class App extends React.Component {
       specsGTIN: 0,
       brand: '',
       categoryBrand: [],
+      TotalReviews: 0,
     };
   }
 
@@ -64,21 +65,23 @@ class App extends React.Component {
           specsGTIN,
         });
       });
-    fetch(`http://localhost:3001/api/reviews/${id}?limit=1`)
-      .then((response) => console.log(response.json()))
+    fetch(`http://localhost:3001/api/reviews/${id}`)
+      .then((response) => (response.json()))
       .then((data) => {
-        console.log(data);
+        this.setState({
+          TotalReviews: data.length,
+        });
       });
   }
 
   render() {
     const {
-      title, description, brand, specsParts, specsGTIN, categoryBrand,
+      title, description, brand, specsParts, specsGTIN, categoryBrand, TotalReviews,
     } = this.state;
     return (
       <Wrapper>
         <div>
-          <Title title={title} />
+          <Title title={title} TotalReviews={TotalReviews} />
         </div>
         <div>
           <Description

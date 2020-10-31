@@ -8,17 +8,28 @@ const TitleStyle = styled.p`
   font-weight: normal;
   text-transform: capitalize;
 `;
-const Title = ({ title }) => (
+const ReviewStyle = styled.p`
+font-size: 16px;
+color: #A9A9A9;
+`;
+const Title = ({ title, TotalReviews }) => (
   <TitleStyle>
     {' '}
     {title}
+    <ReviewStyle>
+      (
+      {TotalReviews}
+      )
+    </ReviewStyle>
   </TitleStyle>
 );
 
 Title.propTypes = {
   title: PropTypes.string,
+  TotalReviews: PropTypes.number,
 };
 Title.defaultProps = {
   title: null,
+  TotalReviews: null,
 };
 export default Title;
