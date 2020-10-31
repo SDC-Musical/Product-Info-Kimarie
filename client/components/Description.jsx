@@ -1,19 +1,38 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Header from './Header.jsx';
 
+const DescriptionItemStyle = styled.ul`
+
+  padding-top: 20px;
+`;
+const DescriptionListStyle = styled.li`
+  display: inline;
+`;
+
+const DescriptionStyle = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 16 px;
+  color: #A9A9A9;
+`;
 const Description = ({ description, categoryBrand }) => (
   <div>
-    <ul>
+    <DescriptionItemStyle>
+
       {categoryBrand.map((item, index) => (
-        <Header
-          categoryBrand={item}
+        <DescriptionListStyle>
+          <Header
+            categoryBrand={item}
           // eslint-disable-next-line react/no-array-index-key
-          key={index}
-        />
+            key={index}
+          />
+        </DescriptionListStyle>
       ))}
-    </ul>
-    <p>{ description }</p>
+
+    </DescriptionItemStyle>
+    <DescriptionStyle>{ description }</DescriptionStyle>
   </div>
 );
 

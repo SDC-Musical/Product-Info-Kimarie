@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import Title from '../components/Title.jsx';
 import Description from '../components/Description.jsx';
 import Specifications from '../components/Specifications.jsx';
 import staticObj from './Static.js';
+
+const Wrapper = styled.div`
+  color: #222;
+  font-family: 'Roboto', arial, sans-serif;
+  min-width: 914px;
+  max-width: 1024px;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -59,7 +67,7 @@ class App extends React.Component {
     fetch(`http://localhost:3001/api/reviews/${id}?limit=1`)
       .then((response) => console.log(response.json()))
       .then((data) => {
-        //console.log(data);
+        console.log(data);
       });
   }
 
@@ -68,7 +76,7 @@ class App extends React.Component {
       title, description, brand, specsParts, specsGTIN, categoryBrand,
     } = this.state;
     return (
-      <div>
+      <Wrapper>
         <div>
           <Title title={title} />
         </div>
@@ -86,7 +94,7 @@ class App extends React.Component {
           />
         </div>
 
-      </div>
+      </Wrapper>
 
     );
   }

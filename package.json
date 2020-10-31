@@ -7,6 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "production": "webpack -d --mode=production",
     "react-dev": "webpack -d --watch --display-error-details",
     "start": "nodemon server/index.js",
     "seed": "node seedScript.js",
@@ -33,6 +34,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+    "sinon": "^9.2.1",
     "styled-components": "^5.2.1",
     "underscore": "^1.11.0",
     "webpack": "^4.44.2",

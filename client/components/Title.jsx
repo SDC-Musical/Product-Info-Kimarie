@@ -1,11 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const TitleStyle = styled.p`
+  font-size: 20px;
+  margin: 34px 0px 0px 0px;
+  font-weight: normal;
+  text-transform: capitalize;
+`;
 const Title = ({ title }) => (
-  <div>
+  <TitleStyle>
     {' '}
     {title}
-  </div>
+  </TitleStyle>
 );
 
 Title.propTypes = {
