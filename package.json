@@ -33,6 +33,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+    "styled-components": "^5.2.1",
     "underscore": "^1.11.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"

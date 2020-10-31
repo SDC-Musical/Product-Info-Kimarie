@@ -22,7 +22,6 @@ class App extends React.Component {
   componentDidMount() {
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
-    console.log(id);
     fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -56,6 +55,11 @@ class App extends React.Component {
           specsParts,
           specsGTIN,
         });
+      });
+    fetch(`http://localhost:3001/api/reviews/${id}?limit=1`)
+      .then((response) => console.log(response.json()))
+      .then((data) => {
+        //console.log(data);
       });
   }
 
