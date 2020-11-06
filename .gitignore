@@ -28,4 +28,4 @@ bundle-product-information-service.js
 
 # Config Files
 config.js
-.env-cmdrc
+.env-cmd.rc
