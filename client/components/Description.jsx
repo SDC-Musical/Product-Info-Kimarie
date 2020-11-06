@@ -1,4 +1,5 @@
 import React from 'react';
+// import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Header from './Header.jsx';
@@ -17,6 +18,33 @@ const DescriptionStyle = styled.div`
   font-size: 16 px;
   color: #A9A9A9;
 `;
+
+// class Description extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+
+//   render() {
+//     return (
+//       <div>
+//     <DescriptionItemStyle>
+
+//       {categoryBrand.map((item, index) => (
+//         <DescriptionListStyle>
+//           <Header
+//             categoryBrand={item}
+//           // eslint-disable-next-line react/no-array-index-key
+//             key={index}
+//           />
+//         </DescriptionListStyle>
+//       ))}
+
+//     </DescriptionItemStyle>
+//     <DescriptionStyle>{ description }</DescriptionStyle>
+//   </div>
+//     )
+//   }
+// }
 const Description = ({ description, categoryBrand }) => (
   <div>
     <DescriptionItemStyle>
@@ -26,7 +54,7 @@ const Description = ({ description, categoryBrand }) => (
           <Header
             categoryBrand={item}
           // eslint-disable-next-line react/no-array-index-key
-            key={index}
+            index={index}
           />
         </DescriptionListStyle>
       ))}
@@ -45,4 +73,5 @@ Description.defaultProps = {
   description: null,
   categoryBrand: null,
 };
+
 export default Description;

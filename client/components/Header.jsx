@@ -9,17 +9,19 @@ const DescriptionHeadStyle = styled.div`
   font-weight: normal;
   text-transform: capitalize;
 `;
-const Header = ({ categoryBrand }) => (
-  <DescriptionHeadStyle>
+const Header = ({ categoryBrand, index }) => (
+  <DescriptionHeadStyle className={index}>
     {categoryBrand}
   </DescriptionHeadStyle>
 );
 
 Header.propTypes = {
   categoryBrand: PropTypes.string,
+  index: PropTypes.number,
 };
 
 Header.defaultProps = {
   categoryBrand: null,
+  index: null,
 };
 export default Header;

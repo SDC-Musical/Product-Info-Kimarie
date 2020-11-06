@@ -19,7 +19,7 @@ test_seeding:
     - npm run test:seed
   artifacts:
     reports:
-        junit: artifacts/junit-*.xml
+        html: coverage/html-*.xml
 
 test_api:
   stage: test
@@ -27,7 +27,7 @@ test_api:
     - npm run test:server
   artifacts:
     reports:
-        junit: artifacts/junit-*.xml
+        html: coverage/html-*.xml
 
 test_client:
   stage: test
@@ -35,4 +35,4 @@ test_client:
     - npm run test:client
   artifacts:
     reports:
-        junit: artifacts/junit-*.xml
+        html: coverage/html-*.xml

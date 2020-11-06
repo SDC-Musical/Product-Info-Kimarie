@@ -69,7 +69,7 @@ class App extends React.Component {
       .then((response) => (response.json()))
       .then((data) => {
         this.setState({
-          TotalReviews: data.length,
+          TotalReviews: data.length || 0,
         });
       });
   }
