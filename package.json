@@ -7,9 +7,10 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "production": "webpack -d --mode=production",
-    "react-dev": "webpack -d --watch --display-error-details",
-    "start": "nodemon server/index.js",
+    "react-production": "env-cmd production webpack -d --mode=production",
+    "react-dev": "env-cmd dev webpack -d --watch --display-error-details",
+    "server-production": "env-cmd production server/index.js",
+    "server-dev": "env-cmd dev nodemon server/index.js",
     "seed": "node seedScript.js",
     "test": "nyc --reporter=html --reporter=text mocha --require esm _test_/seed.spec/seed.spec.js --exit; nyc --reporter=html --reporter=text mocha _test_/server.spec/server.spec.js --exit",
     "test:seed": "nyc --reporter=html --reporter=text mocha --require esm _test_/seed.spec/seed.spec.js --exit",
