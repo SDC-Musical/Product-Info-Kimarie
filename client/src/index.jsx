@@ -33,6 +33,8 @@ class App extends React.Component {
     const API_REQUEST = process.env.API_REQUEST || 'localhost';
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
+    let review_id = window.location.pathname.substring(14) || '1';
+    id = id.replace('/', '');
     fetch(`http://3.138.189.215/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -67,7 +69,7 @@ class App extends React.Component {
           specsGTIN,
         });
       });
-    fetch(`http://18.222.37.28/api/reviews/${id}`)
+    fetch(`http://18.222.37.28:3001/api/reviews/${review_id}`)
       .then((response) => (response.json()))
       .then((data) => {
         this.setState({
