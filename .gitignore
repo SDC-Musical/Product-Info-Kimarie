@@ -24,7 +24,8 @@ index.json
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-bundle-product-information-service.js
-
+description.js
+title.js
+specs.js
 # Config Files
 config.js

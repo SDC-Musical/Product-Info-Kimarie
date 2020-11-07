@@ -1,5 +1,4 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Header from './Header.jsx';
@@ -9,7 +8,8 @@ const DescriptionItemStyle = styled.ul`
   padding-top: 20px;
 `;
 const DescriptionListStyle = styled.li`
-  display: inline;
+  display: inline-block;
+  float: left
 `;
 
 const DescriptionStyle = styled.div`
@@ -17,34 +17,14 @@ const DescriptionStyle = styled.div`
   flex-wrap: nowrap;
   font-size: 16 px;
   color: #A9A9A9;
+  paddding-top: 100px;
+  margin: 50px ;
 `;
-
-// class Description extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//     <DescriptionItemStyle>
-
-//       {categoryBrand.map((item, index) => (
-//         <DescriptionListStyle>
-//           <Header
-//             categoryBrand={item}
-//           // eslint-disable-next-line react/no-array-index-key
-//             key={index}
-//           />
-//         </DescriptionListStyle>
-//       ))}
-
-//     </DescriptionItemStyle>
-//     <DescriptionStyle>{ description }</DescriptionStyle>
-//   </div>
-//     )
-//   }
-// }
+const StyledMore= styled.a`
+  margin-left: 10px;
+  color: #1a73e8;
+  cursor: pointer;
+`;
 const Description = ({ description, categoryBrand }) => (
   <div>
     <DescriptionItemStyle>
@@ -60,7 +40,9 @@ const Description = ({ description, categoryBrand }) => (
       ))}
 
     </DescriptionItemStyle>
-    <DescriptionStyle>{ description }</DescriptionStyle>
+    <DescriptionStyle>{ description }
+    <StyledMore> more >></StyledMore>
+    </DescriptionStyle>
   </div>
 );
 
