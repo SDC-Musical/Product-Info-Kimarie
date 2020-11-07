@@ -66,7 +66,7 @@ class App extends React.Component {
           specsGTIN,
         });
       });
-    fetch(`http://${API_URL}:3001/api/reviews/${id}`)
+    fetch(`http://${API_REQUEST}:3001/api/reviews/${id}`)
       .then((response) => (response.json()))
       .then((data) => {
         this.setState({
