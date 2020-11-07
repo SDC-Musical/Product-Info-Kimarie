@@ -35,6 +35,7 @@ class App extends React.Component {
     console.log(API_REQUEST);
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
+    console.log(id);
     fetch(`http://${API_URL}:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
