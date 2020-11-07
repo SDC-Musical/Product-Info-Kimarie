@@ -7,8 +7,6 @@ import staticObj from './Static.js';
 const Wrapper = styled.div`
   color: #222;
   font-family: 'Roboto', arial, sans-serif;
-  min-width: 914px;
-  max-width: 1024px;
 `;
 
 class DescriptionApp extends React.Component {
