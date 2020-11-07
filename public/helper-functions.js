@@ -27,6 +27,14 @@ module.exports = {
     }
     return gtStr;
   },
+  count() {
+    let count = 0;
+    count = Product.countDocuments({});
+    return count;
+  },
+  async delete() {
+    await Product.deleteMany({});
+  },
   insertProducts(arr) {
     arr.forEach((item) => {
       new Product(item).save((err) => {

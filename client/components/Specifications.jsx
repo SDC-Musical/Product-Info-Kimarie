@@ -1,11 +1,29 @@
 import React from 'react';
+// import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Body from './Body.jsx';
 
+const SpecHeadStyle = styled.p`
+  font-size: 20px;
+  margin: 34px 0px 0px 0px;
+  font-weight: normal;
+  text-transform: capitalize;
+`;
+
+const SpecBodyStyle = styled.p`
+  font-size: 20px;
+  margin: 34px 0px 0px 0px;
+  font-weight: normal;
+  text-transform: capitalize;
+  color: #A9A9A9;
+  border-bottom: 1px #A9A9A9 solid;
+`;
+
 const Specifications = ({ specsParts, specsGTIN, brand }) => (
   <div>
-    <h1>Specifications</h1>
-    <h2>Universal Product Identifiers</h2>
+    <SpecHeadStyle>Specifications</SpecHeadStyle>
+    <SpecBodyStyle>Universal Product Identifiers</SpecBodyStyle>
     <Body
       specsParts={specsParts}
       specsGTIN={specsGTIN}

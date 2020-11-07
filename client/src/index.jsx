@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import Title from '../components/Title.jsx';
 import Description from '../components/Description.jsx';
 import Specifications from '../components/Specifications.jsx';
 import staticObj from './Static.js';
+
+const Wrapper = styled.div`
+  color: #222;
+  font-family: 'Roboto', arial, sans-serif;
+  min-width: 914px;
+  max-width: 1024px;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -16,14 +24,15 @@ class App extends React.Component {
       specsGTIN: 0,
       brand: '',
       categoryBrand: [],
+      TotalReviews: 0,
     };
   }
 
   componentDidMount() {
+    const API_URL = process.env.API_URL || 'localhost';
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
-    console.log(id);
-    fetch(`http://localhost:3004/api/products/${id}`)
+    fetch(`http://${API_URL}:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         const containerObj = data.category;
@@ -57,16 +66,23 @@ class App extends React.Component {
           specsGTIN,
         });
       });
+    fetch(`http://${API_URL}:3001/api/reviews/${id}`)
+      .then((response) => (response.json()))
+      .then((data) => {
+        this.setState({
+          TotalReviews: data.length || 0,
+        });
+      });
   }
 
   render() {
     const {
-      title, description, brand, specsParts, specsGTIN, categoryBrand,
+      title, description, brand, specsParts, specsGTIN, categoryBrand, TotalReviews,
     } = this.state;
     return (
-      <div>
+      <Wrapper>
         <div>
-          <Title title={title} />
+          <Title title={title} TotalReviews={TotalReviews} />
         </div>
         <div>
           <Description
@@ -82,7 +98,7 @@ class App extends React.Component {
           />
         </div>
 
-      </div>
+      </Wrapper>
 
     );
   }
