@@ -1,12 +1,13 @@
 import sampleData from '../sample.spec/sampleData.spec.js';
 
+const HOST = process.env.HOST || 'localhost';
 const mongoose = require('mongoose');
 const { expect, assert } = require('chai');
 const helper = require('../../public/helper-functions.js');
 
 describe('Database seeding functions are working', () => {
   before((done) => {
-    mongoose.connect('mongodb://localhost/Product')
+    mongoose.connect(`mongodb://${HOST}/Product`)
       .then(() => {
         console.log('Connected to MongoDB!');
         done();
@@ -44,7 +45,7 @@ describe('Database seeding functions are working', () => {
 
 describe('Database seeding functions are working', () => {
   before((done) => {
-    mongoose.connect('mongodb://localhost/Product')
+    mongoose.connect(`mongodb://${HOST}/Product`)
       .then(() => {
         console.log('Connected to MongoDB!');
         done();

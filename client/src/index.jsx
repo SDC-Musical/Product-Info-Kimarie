@@ -29,9 +29,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    const API_URL = process.env.API_URL || 'localhost';
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
-    fetch(`${process.env.API_URL}:3004/api/products/${id}`)
+    fetch(`http://${API_URL}:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         const containerObj = data.category;
@@ -65,7 +66,7 @@ class App extends React.Component {
           specsGTIN,
         });
       });
-    fetch(`${process.env.API_REQUEST}:3001/api/reviews/${id}`)
+    fetch(`http://${API_URL}:3001/api/reviews/${id}`)
       .then((response) => (response.json()))
       .then((data) => {
         this.setState({
