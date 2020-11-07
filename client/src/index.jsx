@@ -30,6 +30,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const API_URL = process.env.API_URL || 'localhost';
+    const API_REQUEST = process.env.API_REQUEST || 'localhost';
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
     fetch(`http://${API_URL}:3004/api/products/${id}`)
@@ -48,6 +49,7 @@ class App extends React.Component {
           specsParts: specsParts || '',
           specsGTIN: specsGTIN || 0,
         });
+        console.log(API_URL);
       })
       .catch((err) => {
         console.log('Unable to complete request: ', err);
@@ -72,6 +74,7 @@ class App extends React.Component {
         this.setState({
           TotalReviews: data.length || 0,
         });
+        console.log(API_REQUEST);
       });
   }
 
