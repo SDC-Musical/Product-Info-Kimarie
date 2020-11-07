@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const helper = require('./public/helper-functions.js');
 
-const HOST = process.env.HOST || 'localhost';
-mongoose.connect(`mongodb://${HOST}/Product`)
+const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
+mongoose.connect(`mongodb://${MONGO_HOST}/Product`)
   .then(() => console.log('Connected to MongoDB!'))
   .catch((err) => console.error("Coudn't connect MongoDB:", err));
 

@@ -3,11 +3,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 const router = require('./routes/index.js');
 
+const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3004;
 const app = express();
 const client = path.join(__dirname, '/../client/dist');
-mongoose.connect(`mongodb://${HOST}/Product`)
+mongoose.connect(`mongodb://${MONGO_HOST}/Product`)
   .then(() => console.log('Connected to MongoDB!'))
   .catch((err) => console.error("Coudn't connect MongoDB:", err));
 app.use((req, res, next) => {
@@ -28,8 +29,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './../client/dist/index.html'));
 });
 app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}!`);
-  console.log(process.env.HOST);
+  console.log(`listening on port ${HOST}:${PORT}!`);
 });
 
 module.exports = app;
