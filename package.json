@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-production": "webpack -r dotenv/config -d --mode=production",
+    "react-production": "webpack -d --mode=production",
     "react-dev": "webpack -d --watch --display-error-details",
     "server-production": "node -r dotenv/config server/index.js",
     "server-dev": "nodemon server/index.js",
