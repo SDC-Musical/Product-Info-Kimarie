@@ -7,6 +7,8 @@ import staticObj from './Static.js';
 const Wrapper = styled.div`
   color: #222;
   font-family: 'Roboto', arial, sans-serif;
+  width: 50%;
+  height: 5vw;
 `;
 
 class TitleApp extends React.Component {
@@ -29,7 +31,7 @@ class TitleApp extends React.Component {
     id = id.replace('/', '');
     let reviewID = window.location.pathname.substring(14) || '1';
     reviewID = reviewID.replace('/', '');
-    fetch(`http://3.138.189.215/api/products/${id}`)
+    fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({

@@ -8,7 +8,7 @@ const TitleStyle = styled.div`
   font-weight: normal;
   text-transform: capitalize;
 `;
-const ReviewStyle = styled.p`
+const ReviewStyle = styled.div`
 display: inline-block;
 float: left;
 font-size: 16px;

@@ -23,12 +23,19 @@ function createNewProducts() {
   for (let i = 1; i < 101; i += 1) {
     const productObject = {};
     productObject.product_id = i;
-    productObject.description = descriptionChoice[helper.randNum(0, 24)];
+    productObject.description = `${descriptionChoice[helper.randNum(0, 24)]}${
+      descriptionChoice[helper.randNum(0, 24)]
+    }${descriptionChoice[helper.randNum(0, 24)]
+    }${descriptionChoice[helper.randNum(0, 24)]
+    }${
+      descriptionChoice[helper.randNum(0, 24)]
+    }${
+      descriptionChoice[helper.randNum(0, 24)]}`;
     productObject.title = titleChoice[i - 1];
     productObject.brand = brandName[helper.randNum(1, 8)];
     productObject.category = {};
     productObject.category.name = categoryName[helper.randNum(0, 4)];
-    productObject.category.age = (helper.randNum(3, 18)).toString();
+    productObject.category.age = (helper.randNum(3, 18)).toString().concat(' Player');
     productObject.category.playerCount = playerCount[helper.randNum(0, 6)];
     productObject.specs = {};
     // eslint-disable-next-line max-len
