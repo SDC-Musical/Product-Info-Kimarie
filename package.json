@@ -10,7 +10,7 @@
     "react-production": "webpack -d --mode=production",
     "react-dev": "webpack -d --watch --display-error-details",
     "server-production": "node -r dotenv/config server/index.js",
-    "server-dev": "nodemon server/index.js",
+    "server-dev": "node server/index.js",
     "seed-production": "node -r dotenv/config seedScript.js",
     "seed-dev": "node seedScript.js",
     "test": "nyc --reporter=html --reporter=text mocha --require esm _test_/seed.spec/seed.spec.js --exit; nyc --reporter=html --reporter=text mocha _test_/server.spec/server.spec.js --exit",
