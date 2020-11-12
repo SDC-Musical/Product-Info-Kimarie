@@ -1,13 +1,19 @@
 const path = require('path');
 
-const src = path.join(__dirname, '/client/src');
+const title = path.join(__dirname, '/client/src/title_app.jsx');
+const specs = path.join(__dirname, '/client/src/specs_app.jsx');
+const description = path.join(__dirname, '/client/src/description_app.jsx');
 const dist = path.join(__dirname, '/client/dist');
 const node = path.join(__dirname, 'node_modules');
 
 module.exports = {
-  entry: `${src}/index.jsx`,
+  entry: {
+    title,
+    description,
+    specs,
+  },
   output: {
-    filename: 'bundle-product-information-service.js',
+    filename: '[name].js',
     path: dist,
   },
   resolve: {

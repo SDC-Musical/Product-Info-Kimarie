@@ -32,8 +32,9 @@ const CellItemStyle2 = styled.div`
   text-transform: capitalize;
   color: #A9A9A9;
 `;
-const BottomBorderStyle = styled.p`
-margin-left: -10px
+const BottomBorderStyle = styled.div`
+margin: 100px 0px 0px-10px
+height: 10 px
 color: #A9A9A9;
 border-top: 1px #A9A9A9 solid;
 width: 100%
@@ -44,43 +45,46 @@ color: #A9A9A9;
 border-bottom: 1px #A9A9A9 solid;
 */
 const Body = ({ specsParts, specsGTIN, brand }) => (
+  <div>
+    <SpecTableStyle>
+      <RowItemStyle>
+        <CellItemStyle1>
+          Brand
+        </CellItemStyle1>
 
-  <SpecTableStyle>
-    <RowItemStyle>
-      <CellItemStyle1>
-        Brand
-      </CellItemStyle1>
+        <CellItemStyle2>
+          {brand}
+        </CellItemStyle2>
 
-      <CellItemStyle2>
-        {brand}
-      </CellItemStyle2>
+      </RowItemStyle>
+    </SpecTableStyle>
+    <BottomBorderStyle />
+    <SpecTableStyle>
+      <RowItemStyle>
+        <CellItemStyle1>
+          PartNumbers
+        </CellItemStyle1>
 
-    </RowItemStyle>
+        <CellItemStyle2>
+          {specsParts}
+        </CellItemStyle2>
+      </RowItemStyle>
+    </SpecTableStyle>
+    <BottomBorderStyle />
+    <SpecTableStyle>
+      <RowItemStyle>
+        <CellItemStyle1>
+          GTIN
+        </CellItemStyle1>
+
+        <CellItemStyle2>
+          {specsGTIN}
+        </CellItemStyle2>
+      </RowItemStyle>
+    </SpecTableStyle>
     <BottomBorderStyle />
 
-    <RowItemStyle>
-      <CellItemStyle1>
-        PartNumbers
-      </CellItemStyle1>
-
-      <CellItemStyle2>
-        {specsParts}
-      </CellItemStyle2>
-    </RowItemStyle>
-    <BottomBorderStyle />
-
-    <RowItemStyle>
-      <CellItemStyle1>
-        GTIN
-      </CellItemStyle1>
-
-      <CellItemStyle2>
-        {specsGTIN}
-      </CellItemStyle2>
-    </RowItemStyle>
-
-    <BottomBorderStyle />
-  </SpecTableStyle>
+  </div>
 );
 
 Body.propTypes = {

@@ -1,5 +1,4 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Body from './Body.jsx';
