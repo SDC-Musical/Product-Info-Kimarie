@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const helper = require('./public/helper-functions.js');
 
 const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
-mongoose.connect(`mongodb://${MONGO_HOST}/Product`)
+mongoose.connect(`mongodb://${MONGO_HOST}/Product`, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB!'))
   .catch((err) => console.error("Coudn't connect MongoDB:", err));
 
