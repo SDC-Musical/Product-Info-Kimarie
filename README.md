@@ -1,6 +1,6 @@
-# Project Name
+# Google Shopping Product Information
 
-> Project description
+> Descriptions for each item including pruduct number, general description, product name (title), brand, category by name, age and player count, and specs (part number and GTIN)
 
 ## Related Projects
 
@@ -12,8 +12,9 @@
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+2. [Requirements](#Requirements)
+3. [Development](#Development)
+4. [Product-API](#Product-API)
 
 ## Usage
 
@@ -27,6 +28,13 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - etc
 
 ## Development
+
+## Product-API
+- POST / creates a new product
+- GET products/:product_id returns the product associated with that id number
+- GET brand/:brand returns an array of products of that brand
+- PUT /:product_id updates the product at that id with the given information
+- DELETE /:product_id removes the product at that id from the collection
 
 ### Installing Dependencies
 
