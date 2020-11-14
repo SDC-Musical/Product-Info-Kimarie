@@ -42,9 +42,25 @@ const brand = (req, res) => {
       res.status(500).send('Something Broke!');
     });
 };
+
+const create = (req, res) => {
+
+};
+
+const update = (req, res) => {
+
+};
+
+const remove = (req, res) => {
+
+};
+
 module.exports = {
   title,
   brand,
+  create,
+  update,
+  remove
 };
 
 /* future addition - query params  - if req.params.length === 0;
