@@ -52,7 +52,15 @@ const update = (req, res) => {
 };
 
 const remove = (req, res) => {
-
+  let id = req.params.product_id;
+  Product.remove({ product_id: id })
+    .then((res) => {
+      res.status(200).send('Product removed!');
+    })
+    .catch((err) => {
+      console.log('Item deletion error:', err);
+      res.status(500).send('Item deletion error!')
+    });
 };
 
 module.exports = {
