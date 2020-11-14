@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const router = require('./routes/index.js');
+const morgan = require('morgan');
 
 const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
 const HOST = process.env.HOST || 'localhost';
@@ -9,7 +10,7 @@ const PORT = process.env.PORT || 3004;
 const app = express();
 const client = path.join(__dirname, '/../client/dist');
 
-mongoose.connect(`mongodb://${MONGO_HOST}/Product`)
+mongoose.connect(`mongodb://${MONGO_HOST}/Product`, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB!'))
   .catch((err) => console.error("Coudn't connect MongoDB:", err));
 
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 app.use('/api', router);
 app.use('/products/:product_id', express.static(client));
 app.use('/', express.static(client));
