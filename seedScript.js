@@ -48,6 +48,7 @@ function createNewProducts() {
 const seed = async () => {
   await helper.delete();
   await createNewProducts();
+  console.log(products.length);
   await helper.insertProducts(products);
 };
 

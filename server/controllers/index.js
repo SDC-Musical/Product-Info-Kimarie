@@ -53,8 +53,8 @@ const update = (req, res) => {
 
 const remove = (req, res) => {
   let id = req.params.product_id;
-  console.log(id);
-  Product.remove({ product_id: id })
+  console.log('id:', id);
+  Product.findOneAndDelete({ product_id: id })
     .then((res) => {
       res.status(200).send('Product removed!');
     })
