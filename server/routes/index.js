@@ -7,13 +7,13 @@ router.get('/brand/:brand', controller.brand);
 
 /* ----------------------- CRUD Additions-----*/
 // Create a new product
-router.post('/', controller.create);
+router.post('/create', controller.create);
 
 // Update a product
-router.put('/:product_id', controller.update);
+router.put('/update/:product_id', controller.update);
 
 // Delete a product
-router.delete('/:product_id', controller.remove);
+router.delete('/delete/:product_id', controller.remove);
 
 /* ----------------------- External---------- */
 // router.get('reviews/product_id');

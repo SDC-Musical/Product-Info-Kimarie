@@ -52,7 +52,8 @@ const update = (req, res) => {
 };
 
 const remove = (req, res) => {
-  let id = req.params.product_id;
+  //let id = req.params.product_id;
+  let id = 24;
   console.log('id:', id);
   Product.findOneAndDelete({ product_id: id })
     .then((res) => {
