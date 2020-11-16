@@ -30,11 +30,11 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ## Development
 
 ## Product-API
-- POST / creates a new product
+- POST /create creates a new product
 - GET products/:product_id returns the product associated with that id number
 - GET brand/:brand returns an array of products of that brand
-- PUT /:product_id updates the product at that id with the given information
-- DELETE /:product_id removes the product at that id from the collection
+- PUT /update/:product_id updates the product at that id with the given information
+- DELETE /delete/:product_id removes the product at that id from the collection
 
 ### Installing Dependencies
 
