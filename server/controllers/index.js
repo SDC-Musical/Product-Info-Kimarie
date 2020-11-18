@@ -48,6 +48,9 @@ const create = (req, res) => {
 };
 
 const update = (req, res) => {
+  let id = req.params.product_id;
+  let info = req.query;
+  console.log({id, info});
 
 };
 
@@ -55,7 +58,8 @@ const remove = (req, res) => {
   let id = req.params.product_id;
   console.log('id:', id);
   Product.findOneAndDelete({ product_id: id })
-    .then((res) => {
+    .then((result) => {
+      console.log('Delete result:', result);
       res.status(200).send('Product removed!');
     })
     .catch((err) => {
