@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const router = require('./routes/index.js');
-//const parser = require('body-parser');
+const parser = require('body-parser');
 //const cors = require('cors');
 const morgan = require('morgan');
 
@@ -22,8 +22,8 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.use(parser.urlencoded({ extended: true }));
-//app.use(parser.json());
+app.use(parser.urlencoded({ extended: true }));
+app.use(parser.json());
 //app.use(cors());
 app.use(morgan('dev'));
 app.use('/api', router);
