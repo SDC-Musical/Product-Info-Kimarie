@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/SDC-Musical/reviews-service
+  - https://github.com/SDC-Musical/seller-catalog
+  - https://github.com/SDC-Musical/images-service
+  - https://github.com/SDC-Musical/Product-Info-Kimarie
 
 ## Table of Contents
 
