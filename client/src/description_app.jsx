@@ -24,9 +24,17 @@ class DescriptionApp extends React.Component {
   componentDidMount() {
     // const API_URL = process.env.API_URL || 'localhost:3004';
     // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
+
+    // Change for localhost
+    /*
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
+
     fetch(`http://3.138.189.215/api/products/${id}`)
+    */
+    let id = window.location.pathname.slice(1);
+    console.log(id);
+    fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         const containerObj = data.category;
