@@ -27,11 +27,16 @@ class TitleApp extends React.Component {
     // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
     let count = 0;
     let sumRatings = 0;
-    let id = window.location.pathname.substring(10) || '1';
+
+    // Ammend to accomodate non-deployed id
+    /*let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
     let reviewID = window.location.pathname.substring(14) || '1';
     reviewID = reviewID.replace('/', '');
     fetch(`http://3.138.189.215/api/products/${id}`)
+    */
+    let id = window.location.pathname.slice(1);
+    fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -45,7 +50,7 @@ class TitleApp extends React.Component {
           title: data.title,
         });
       });
-    fetch(`http://18.222.37.28:3001/api/reviews/${reviewID}`)
+    fetch(`http://18.222.37.28:3001/api/reviews/${id}`)
       .then((response) => (response.json()))
       .then((data) => {
         while (count < data.length) {
