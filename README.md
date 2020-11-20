@@ -18,7 +18,8 @@
 
 ## Usage
 
-> Some usage instructions
+Execute db/models/schema.sql from command line with:
+  `mysql -u root < db/models/schema.sql`
 
 ## Requirements
 
