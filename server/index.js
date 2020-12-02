@@ -4,7 +4,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 const router = require('./routes/index.js');
 const parser = require('body-parser');
-//const cors = require('cors');
 const morgan = require('morgan');
 
 const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
@@ -13,7 +12,6 @@ const PORT = process.env.PORT || 3004;
 
 const client = path.join(__dirname, '/../client/dist');
 
-// Installed and using cors instead
 app.use((req, res, next) => {
   res.set({
     'Access-Control-Allow-Origin': '*',
@@ -24,8 +22,8 @@ app.use((req, res, next) => {
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
-//app.use(cors());
 app.use(morgan('dev'));
+
 app.use('/api', router);
 app.use('/products/:product_id', express.static(client));
 app.use('/', express.static(client));
