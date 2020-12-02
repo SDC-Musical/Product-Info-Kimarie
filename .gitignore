@@ -29,3 +29,6 @@ title.js
 specs.js
 # Config Files
 config.js
+
+# Generated CSV file for DB seeding
+database/seed_files/products.csv
