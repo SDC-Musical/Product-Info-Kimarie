@@ -4,7 +4,7 @@ const fs = require('fs');
 let age = ['0 to 3 years', '3 to 6 years', 'safe for ages 6 and above', '12 years and above', 'good for all ages', 'fun for all ages'];
 let playerCount = ['1 player', '2 players', '2 to 4 players', '4 players', '4 to 6 players', 'up to 10 players', '4 to 8 players', '3 to 9 players', '2 teams of 3'];
 
-const writeCSVFile = fs.createWriteStream('db/products.csv');
+const writeCSVFile = fs.createWriteStream('database/seed_files/products.csv');
 
 const streamProductsToFile = (writer, encoding, callback) => {
   let i = 10000000;
