@@ -1,6 +1,6 @@
 const lodash = require('lodash');
 
-const { Product } = require('../../database/models/product.js', {
+const db = require('../index.js', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

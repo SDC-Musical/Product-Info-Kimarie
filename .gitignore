@@ -32,3 +32,6 @@ config.js
 
 # Generated CSV file for DB seeding
 database/seed_files/products.csv
+
+# DB Password File
+database/keys.js
