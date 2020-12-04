@@ -72,10 +72,16 @@ const create = (req, res) => {
 };
 
 const update = (req, res) => {
+  let escapedValues = [];
   let id = req.params.product_id;
   let update = 'Kimmy updated this description with CRUD! CRUD is cooool!!';
 
-  Product.findOneAndUpdate({ product_id : id }, { description: update })
+  escapedValues.push(id, update);
+
+  db.query(`UPDATE products SET description = ? WHERE id = ?`, escapedValues, (error, results, fields) => {
+    if (error) throw error;
+    console.log()
+  } )
     .then((results) => {
       console.log('Update results:', results);
       res.status(200).send('Product updated!')
