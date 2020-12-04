@@ -1,5 +1,7 @@
+const { mySQLUserName, mySQLKey } = require('../database/keys.js');
+
 const { Sequelize, DataTypes } = require ('sequelize');
-const db = new Sequelize('google_shopping', 'root', null, {
+const db = new Sequelize('google_shopping', mySQLUserName, mySQLKey, {
   dialect: 'mysql',
 })
 

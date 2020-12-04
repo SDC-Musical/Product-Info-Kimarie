@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mysql = require('mysql');
-const DBKey = require('../database/keys.js')
+const { mySQLUserName, mySQLKey } = require('../database/keys.js');
 const router = require('./routes/index.js');
 const parser = require('body-parser');
 const morgan = require('morgan');
@@ -32,8 +32,8 @@ app.use('/', express.static(client));
 
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: DBKey,
+  user: mySQLUserName,
+  password: mySQLKey,
 });
 
 db.connect(err => {
