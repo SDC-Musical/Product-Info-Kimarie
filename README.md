@@ -17,24 +17,31 @@
 4. [Product-API](#Product-API)
 
 ## Usage
-**Establishing seeded, mySQL database**
-Log into mySQL from shell
-  *mysql -u yourUserName -p yourPassword*\
-Create a database called 'google_shopping'
-  *CREATE DATABASE google_shopping*
+**Establishing seeded, mySQL database** <br />
+
+Log into mySQL from shell <br/>
+*mysql -u yourUserName -p yourPassword* <br />
+
+Create a database called 'google_shopping' <br />
+*CREATE DATABASE google_shopping* <br />
+
 Create the file database/keys.js and add your password
-  ```
+```
   module.exports = {
     const mySQLUserName = 'yourMySQLUserName';
     const mySQLKey = 'yourMySQLPassword';
   }
-  ```
-From the root directory of the service, run the table generation script
-  *node database/seed_files/products.js*
-Then run the data generation script to create a CSV with 10,000,000 entries
-  *node database/seed_files/seed.js*
-In mySQL switch to the 'google_shopping' database
-  *USE google_shopping*
+```
+
+From the root directory of the service, run the table generation script <br />
+*node database/seed_files/products.js* <br />
+
+Then run the data generation script to create a CSV with 10,000,000 entries <br />
+*node database/seed_files/seed.js* <br />
+
+In mySQL switch to the 'google_shopping' database <br />
+*USE google_shopping* <br />
+
 Upload the entries from databases/seed_files/products.csv from mySQL
 ```
   LOAD DATA LOCAL INFILE "path to db/products.csv on your machine"
