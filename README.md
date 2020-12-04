@@ -19,7 +19,9 @@
 ## Usage
 **Establishing seeded, mySQL database**
 Log into mySQL from shell
+
 *mysql -u yourUserName -p yourPassword*
+
 Create a database called 'google_shopping'
 *CREATE DATABASE google_shopping*
 Create the file database/keys.js and add your password
