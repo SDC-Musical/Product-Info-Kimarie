@@ -1,114 +1,106 @@
 const lodash = require('lodash');
-
-const db = require('../index.js', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const Products = require('../../database/models/index.js');
 
 const title = (req, res) => {
-  const id = req.params.product_id.split(':').join('');
-  Product.find({ product_id: id })
-    .then((result) => {
-      // eslint-disable-next-line no-underscore-dangle
-      const productObj = result[0]._doc;
-      // testing purposes: console.log(productObj);
-      const productInfo = lodash.omit(productObj, ['_id', '__v']);
-      res.status(200).send(productInfo);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send({ error: 'Something Broke!' });
-    });
-};
+  const id = req.params.product_id;
+  const selector = ['id', id];
 
-// brand route is broken....
-const brand = (req, res) => {
-  const brandName = req.params.brand.split(':').join('').toString();
-
-  Product.find({ brand: brandName })
-    .then((result) => {
-      // testing purposes: console.log(result[0]);
-      // eslint-disable-next-line no-underscore-dangle
-      const brandObj = result.map((item) => item._doc);
-      const brandInfo = [];
-      for (let i = 0; i < brandObj.length; i + 1) {
-        brandInfo.push(lodash.omit(brandObj[i], ['_id', '__v']));
+  Products.read(selector, (err, result) => {
+    if (err) {
+      res.status(500).send({ error: err });
+    } else {
+      if (result.length === 0) {
+        res.status(404).send('No matching entry found');
+      } else {
+        res.status(200).send(result[0].title);
       }
-      console.log(brandInfo);
-      res.status(200).send(brandInfo);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send('Something Broke!');
-    });
+    }
+  });
 };
 
-const create = (req, res) => {
+const brand = (req, res) => {
+  const brandName = req.query.brand_name;
+  const selector = ['brand', brandName];
+
+  Products.read(selector, (err, result) => {
+    if (err) {
+      res.status(500).send({ error: err });
+    } else {
+      if (result.length === 0) {
+        res.status(404).send('No matching entry found');
+      } else {
+        res.status(200).send(result);
+      }
+    }
+  });
+}
+
+const createEntry = (req, res) => {
   let productObject = {
-    product_id: 37,
-    description: 'I used CRUD to recreate this product after using CRUD to delete it. This makes me happy!!',
-    title: 'Kimmy New Product',
-    brand: 'KHB World',
-    category: {
-      name: 'API Funsies',
-      age: 'All Ages',
-      playerCount: 'Come one! Come All!!',
-    },
-    specs: {
-      part_Number: 'rando part string',
-      GTIN: 9875750,
-    },
+    description: req.body.description,
+    title: req.body.title,
+    brand: req.body.brand,
+    category: req.body.catName,
+    age: req.body.age,
+    player: req.body.player,
+    part: req.body.part,
+    GTIN: 9875750,
   }
 
-  Product.create(productObject)
-    .then((results) => {
-      console.log('Create results:', results);
-      res.status(200).send('Product Created!');
-    })
-    .catch((err) => {
-      console.log('Item creation error:', err);
-      res.status(500).send('Item creation error!');
-    });
+  Products.create(productObject, (err, result) => {
+    if (err) {
+      res.status(500).send({ error: err });
+    } else {
+      res.status(200).send(`${result.affectedRows} record(s) created`);
+    }
+  });
 };
 
-const update = (req, res) => {
-  let id = req.params.product_id;
-  let update = 'Kimmy updated this description with CRUD! CRUD is cooool!!';
+const updateDatabase = (req, res) => {
+  const selector = {
+    id: req.body.productId,
+    field: req.body.field,
+    updateInfo: req.body.updateInfo,
+  }
 
-  Product.findOneAndUpdate({ product_id : id }, { description: update })
-    .then((results) => {
-      console.log('Update results:', results);
-      res.status(200).send('Product updated!')
-    })
-    .catch((err) => {
-      console.log('Update error:', err);
-      res.status(500).send('Update error!');
-    });
+  Products.update(selector, (err, result) => {
+    if (err) {
+      res.status(500).send({ error: err });
+    } else {
+      if (result.affectedRows === 0) {
+        res.status(404).send('No matching entry found');
+      } else {
+        res.status(200).send(`${result.affectedRows} row(s) updated`);
+      }
+    }
+  });
 };
 
-const remove = (req, res) => {
-  // 37 and 38 have been deleted
-  let id = req.params.product_id;
+const deleteEntry = (req, res) => {
+  //deleted 37
+  // Change to use req.query.field and req.query.value to allow deletion using fileds other than product id
+  const selector = {
+    field: 'id',
+    fieldValue: req.params.product_id,
+  };
 
-  Product.findOneAndDelete({ product_id: id })
-    .then((result) => {
-      console.log('Delete result:', result);
-      res.status(200).send('Product removed!');
-    })
-    .catch((err) => {
-      console.log('Item deletion error:', err);
-      res.status(500).send('Item deletion error!')
-    });
+  Products.remove(selector, (err, result, fields) => {
+    if (err) {
+      res.status(500).send({ error: err });
+    } else {
+      if (result.affectedRows === 0) {
+        res.status(404).send('No matching entry found');
+      } else {
+        res.status(200).send(`${result.affectedRows} row(s) deleted`);
+      }
+    }
+  });
 };
 
 module.exports = {
   title,
   brand,
-  create,
-  update,
-  remove
+  createEntry,
+  updateDatabase,
+  deleteEntry,
 };
-
-/* future addition - query params  - if req.params.length === 0;
-req.query = id  - routes and test must change
-*/
