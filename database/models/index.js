@@ -33,8 +33,9 @@ const read = (selector, callback) => {
   });
 };
 
-const update = () => {
-
+const update = (selector, callback) => {
+  //selector = id of entry to be changed, field to be changed, update info
+  db.query(`UPDATE products SET ${selector[0]} = ? WHERE id = ?`)
 }
 
 const remove = (selector, callback) => {
