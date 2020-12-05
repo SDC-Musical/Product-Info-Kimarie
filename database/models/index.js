@@ -16,9 +16,17 @@ db.connect(err => {
   }
 });
 
-const create = () => {
-
-}
+const create = (product, callback) => {
+ db.query(
+  `INSERT INTO products (description, title, brand, category_name, age_category, player_Count, part_Number, GTIN)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)`, [product.description, product.title, product.brand, product.category, product.age, product.player, product.part, product.GTIN], (error, result) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, result);
+    }
+  });
+};
 
 const read = (selector, callback) => {
   db.query(`SELECT * FROM products WHERE ${selector[0]} = ?`, [selector[1]], (error, result) => {

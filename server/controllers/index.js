@@ -37,30 +37,23 @@ const brand = (req, res) => {
 
 const createEntry = (req, res) => {
   let productObject = {
-    product_id: 37,
-    description: 'I used CRUD to recreate this product after using CRUD to delete it. This makes me happy!!',
-    title: 'Kimmy New Product',
-    brand: 'KHB World',
-    category: {
-      name: 'API Funsies',
-      age: 'All Ages',
-      playerCount: 'Come one! Come All!!',
-    },
-    specs: {
-      part_Number: 'rando part string',
-      GTIN: 9875750,
-    },
+    description: req.body.description,
+    title: req.body.title,
+    brand: req.body.brand,
+    category: req.body.catName,
+    age: req.body.age,
+    player: req.body.player,
+    part: req.body.part,
+    GTIN: 9875750,
   }
 
-  Product.create(productObject)
-    .then((results) => {
-      console.log('Create results:', results);
-      res.status(200).send('Product Created!');
-    })
-    .catch((err) => {
-      console.log('Item creation error:', err);
-      res.status(500).send('Item creation error!');
-    });
+  Products.create(productObject, (err, result) => {
+    if (err) {
+      res.status(500).send({ error: err });
+    } else {
+      res.status(200).send(`${result.affectedRows} record(s) created`);
+    }
+  });
 };
 
 const updateDatabase = (req, res) => {
@@ -72,7 +65,6 @@ const updateDatabase = (req, res) => {
 
   Products.update(selector, (err, result) => {
     if (err) {
-      console.log('Update error:', err);
       res.status(500).send({ error: err });
     } else {
       if (result.affectedRows === 0) {
