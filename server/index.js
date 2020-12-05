@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-// const mysql = require('mysql');
-// const { mySQLUserName, mySQLKey } = require('../database/keys.js');
 const router = require('./routes/index.js');
 const parser = require('body-parser');
 const morgan = require('morgan');
