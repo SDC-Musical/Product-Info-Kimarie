@@ -19,7 +19,11 @@ db.connect(err => {
   }
 });
 
-const readOne = (selector, callback) => {
+const create = () => {
+
+}
+
+const read = (selector, callback) => {
   db.query(`SELECT * FROM products WHERE ${selector[0]} = ?`, [selector[1]], (error, result) => {
     if (error) {
       callback(error);
@@ -29,7 +33,17 @@ const readOne = (selector, callback) => {
   });
 };
 
-module.exports = {
-  readOne,
+const update = () => {
 
+}
+
+const remove = () => {
+
+}
+
+module.exports = {
+  create,
+  read,
+  update,
+  remove,
 }
