@@ -7,7 +7,7 @@ router.get('/products/:product_id', controller.title);
 router.get('/brand', controller.brand);
 
 /* ----------------------- CRUD Additions-----*/
-// Create a new product
+// Create a new product (use req.body)
 router.post('/create', controller.createEntry);
 
 // Update a product (use req.body)
