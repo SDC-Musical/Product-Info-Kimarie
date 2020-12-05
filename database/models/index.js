@@ -37,8 +37,14 @@ const update = () => {
 
 }
 
-const remove = () => {
-
+const remove = (selector, callback) => {
+  db.query(`DELETE FROM products WHERE ${selector[0]} = ?`, [selector[1]], (error, result) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, result);
+    }
+  });
 }
 
 module.exports = {
