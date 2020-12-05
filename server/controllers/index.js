@@ -1,25 +1,17 @@
 const lodash = require('lodash');
-
-const db = require('../index.js', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const Products = require('../../database/models/index.js');
 
 const title = (req, res) => {
   const id = req.params.product_id.split(':').join('');
-  Product.find({ product_id: id })
-    .then((result) => {
-      // eslint-disable-next-line no-underscore-dangle
-      const productObj = result[0]._doc;
-      // testing purposes: console.log(productObj);
-      const productInfo = lodash.omit(productObj, ['_id', '__v']);
-      res.status(200).send(productInfo);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send({ error: 'Something Broke!' });
-    });
-};
+  const selector = ['id', id];
+  Products.readOne(selector, (err, result) => {
+    if (err) {
+      res.status(500).send({ error: err });
+    } else {
+      res.status(200).send(result[0].title);
+    }
+  })
+}
 
 // brand route is broken....
 const brand = (req, res) => {
