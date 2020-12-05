@@ -1,14 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const mysql = require('mysql');
-const { mySQLUserName, mySQLKey } = require('../database/keys.js');
+// const mysql = require('mysql');
+// const { mySQLUserName, mySQLKey } = require('../database/keys.js');
 const router = require('./routes/index.js');
 const parser = require('body-parser');
 const morgan = require('morgan');
 
-// Saving env values for deployment
-// const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3004;
 
@@ -30,20 +28,6 @@ app.use('/api', router);
 app.use('/products/:product_id', express.static(client));
 app.use('/', express.static(client));
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: mySQLUserName,
-  password: mySQLKey,
-});
-
-db.connect(err => {
-  if (err) {
-    console.log('Error establishing mySQL DB connection:', err);
-  } else {
-    console.log('mySql DB connection successful!');
-  }
-});
-
 app.get('*', (req, res) => {
   if (Object.keys(req.params)[0] !== 'product_id') {
     res.status(404);
@@ -56,4 +40,3 @@ app.listen(PORT, () => {
 });
 
 exports.app = app;
-exports.db = db;
