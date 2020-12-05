@@ -64,23 +64,24 @@ const createEntry = (req, res) => {
 };
 
 const updateDatabase = (req, res) => {
-  let id = req.params.product_id;
-  let update = 'Kimmy updated this description with CRUD! CRUD is cooool!!';
+  const id = req.body.productId;
+  const update = req.body.updateInfo;
+  //add field that gets update
+  const selector = ['id', id];
 
-  escapedValues.push(id, update);
-
-  db.query(`UPDATE products SET description = ? WHERE id = ?`, escapedValues, (error, results, fields) => {
-    if (error) throw error;
-    console.log()
-  } )
-    .then((results) => {
-      console.log('Update results:', results);
-      res.status(200).send('Product updated!')
-    })
-    .catch((err) => {
+  Products.update(selector, (err, result) => {
+    if (err) {
       console.log('Update error:', err);
-      res.status(500).send('Update error!');
-    });
+      res.status(500).send({ error: err });
+    } else {
+      if (result.length === 0) {
+        res.status(404).send('No matching entry found');
+      } else {
+        console.log('Update results:', result);
+        res.status(200).send(`${result.affectedRows} row(s) updated`);
+      }
+    }
+  });
 };
 
 const deleteEntry = (req, res) => {
