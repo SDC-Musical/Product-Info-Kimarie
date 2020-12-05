@@ -84,18 +84,21 @@ const updateDatabase = (req, res) => {
 };
 
 const deleteEntry = (req, res) => {
-  // 37 and 38 have been deleted
-  let id = req.params.product_id;
+  //deleted 37
+  const id = req.params.product_id;
+  const selector = ['id', id];
 
-  Product.findOneAndDelete({ product_id: id })
-    .then((result) => {
-      console.log('Delete result:', result);
-      res.status(200).send('Product removed!');
-    })
-    .catch((err) => {
-      console.log('Item deletion error:', err);
-      res.status(500).send('Item deletion error!')
-    });
+  Products.remove(selector, (err, result, fields) => {
+    if (err) {
+      res.status(500).send({ error: err });
+    } else {
+      if (result.length === 0) {
+        res.status(404).send('No matching entry found');
+      } else {
+        res.status(200).send(`${result.affectedRows} row(s) deleted`);
+      }
+    }
+  });
 };
 
 module.exports = {
@@ -105,7 +108,3 @@ module.exports = {
   updateDatabase,
   deleteEntry,
 };
-
-/* future addition - query params  - if req.params.length === 0;
-req.query = id  - routes and test must change
-*/
