@@ -64,20 +64,20 @@ const createEntry = (req, res) => {
 };
 
 const updateDatabase = (req, res) => {
-  const id = req.body.productId;
-  const update = req.body.updateInfo;
-  //add field that gets update
-  const selector = ['id', id];
+  const selector = {
+    id: req.body.productId,
+    field: req.body.field,
+    updateInfo: req.body.updateInfo,
+  }
 
   Products.update(selector, (err, result) => {
     if (err) {
       console.log('Update error:', err);
       res.status(500).send({ error: err });
     } else {
-      if (result.length === 0) {
+      if (result.affectedRows === 0) {
         res.status(404).send('No matching entry found');
       } else {
-        console.log('Update results:', result);
         res.status(200).send(`${result.affectedRows} row(s) updated`);
       }
     }
@@ -86,14 +86,17 @@ const updateDatabase = (req, res) => {
 
 const deleteEntry = (req, res) => {
   //deleted 37
-  const id = req.params.product_id;
-  const selector = ['id', id];
+  // Change to use req.query.field and req.query.value to allow deletion using fileds other than product id
+  const selector = {
+    field: 'id',
+    fieldValue: req.params.product_id,
+  };
 
   Products.remove(selector, (err, result, fields) => {
     if (err) {
       res.status(500).send({ error: err });
     } else {
-      if (result.length === 0) {
+      if (result.affectedRows === 0) {
         res.status(404).send('No matching entry found');
       } else {
         res.status(200).send(`${result.affectedRows} row(s) deleted`);

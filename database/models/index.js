@@ -1,6 +1,3 @@
-// const { query } = require('mysql');
-// const db = require('../../server/index.js');
-
 const mysql = require('mysql');
 const { mySQLUserName, mySQLKey } = require('../keys.js');
 
@@ -34,12 +31,17 @@ const read = (selector, callback) => {
 };
 
 const update = (selector, callback) => {
-  //selector = id of entry to be changed, field to be changed, update info
-  db.query(`UPDATE products SET ${selector[0]} = ? WHERE id = ?`)
+  db.query(`UPDATE products SET ${selector.field} = ? WHERE id = ?`, [selector.updateInfo, selector.id], (error, result) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, result);
+    }
+  })
 }
 
 const remove = (selector, callback) => {
-  db.query(`DELETE FROM products WHERE ${selector[0]} = ?`, [selector[1]], (error, result) => {
+  db.query(`DELETE FROM products WHERE ${selector.field} = ?`, [selector.fieldValue], (error, result) => {
     if (error) {
       callback(error);
     } else {
