@@ -24,41 +24,41 @@ class SpecsApp extends React.Component {
   }
 
   componentDidMount() {
+    //Temporary change for local host
     // const API_URL = process.env.API_URL || 'localhost:3004';
     // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
 
-    // Change for non-deployed service
     /*
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
 
     fetch(`http://3.138.189.215/api/products/${id}`)
     */
-    let id = window.location.pathname.slice(1);
+    let id;
+    if (window.location.pathname === '/') {
+      id = 1;
+    } else {
+      id = window.location.pathname.slice(1);
+    }
+
     fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        const containerObj = data.category;
-        containerObj.brand = data.brand;
-        const specsParts = data.specs.part_Number;
-        const specsGTIN = data.specs.GTIN;
+
         this.setState({
           brand: data.brand || '',
-          specsParts: specsParts || '',
-          specsGTIN: specsGTIN || 0,
+          specsParts: data.part_Number || '',
+          specsGTIN: data.GTIN || 0,
         });
       })
       .catch((err) => {
         console.log('Unable to complete request: ', err);
         const data = staticObj[id - 1];
-        const containerObj = data.category;
-        containerObj.brand = data.brand;
-        const specsParts = data.specs.part_Number;
-        const specsGTIN = data.specs.GTIN;
+        const specsParts = data.part_Number;
+        const specsGTIN = data.GTIN;
+
         this.setState({
-
           brand: data.brand,
-
           specsParts,
           specsGTIN,
         });
@@ -66,9 +66,7 @@ class SpecsApp extends React.Component {
   }
 
   render() {
-    const {
-      brand, specsParts, specsGTIN,
-    } = this.state;
+    const { brand, specsParts, specsGTIN } = this.state;
     return (
       <Wrapper>
         <div>

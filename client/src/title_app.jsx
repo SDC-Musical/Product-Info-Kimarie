@@ -23,24 +23,31 @@ class TitleApp extends React.Component {
   }
 
   componentDidMount() {
+    //Temporary change for local host
     // const API_URL = process.env.API_URL || 'localhost:3004';
     // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
     let count = 0;
     let sumRatings = 0;
-
-    // Ammend to accomodate non-deployed id
     /*let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
     let reviewID = window.location.pathname.substring(14) || '1';
     reviewID = reviewID.replace('/', '');
     fetch(`http://3.138.189.215/api/products/${id}`)
     */
-    let id = window.location.pathname.slice(1);
+    let id;
+    if (window.location.pathname === '/') {
+      id = 1;
+    } else {
+      id = window.location.pathname.slice(1);
+    }
+
     fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
+        let newTitle = data.title;
+
         this.setState({
-          title: data.title || '',
+          title: newTitle || '',
         });
       })
       .catch((err) => {
@@ -50,27 +57,27 @@ class TitleApp extends React.Component {
           title: data.title,
         });
       });
-    fetch(`http://18.222.37.28:3001/api/reviews/${id}`)
-      .then((response) => (response.json()))
-      .then((data) => {
-        while (count < data.length) {
-          sumRatings = data[count].review_rating + sumRatings;
-          count += 1;
-        }
 
-        let averageSum = sumRatings / 5;
-        averageSum = Math.round(averageSum);
-        this.setState({
-          TotalReviews: data.length || 0,
-          AverageRating: averageSum || 0,
-        });
-      });
+  // Request to reviews service
+  //   fetch(`http://18.222.37.28:3001/api/reviews/${id}`)
+  //     .then((response) => (response.json()))
+  //     .then((data) => {
+  //       while (count < data.length) {
+  //         sumRatings = data[count].review_rating + sumRatings;
+  //         count += 1;
+  //       }
+
+  //       let averageSum = sumRatings / 5;
+  //       averageSum = Math.round(averageSum);
+  //       this.setState({
+  //         TotalReviews: data.length || 0,
+  //         AverageRating: averageSum || 0,
+  //       });
+  //     });
   }
 
   render() {
-    const {
-      title, TotalReviews, AverageRating,
-    } = this.state;
+    const { title, TotalReviews, AverageRating } = this.state;
     return (
       <Wrapper>
         <div>
