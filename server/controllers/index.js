@@ -12,7 +12,7 @@ const title = (req, res) => {
       if (result.length === 0) {
         res.status(404).send('No matching entry found');
       } else {
-        res.status(200).send(result[0].title);
+        res.status(200).send(result[0]);
       }
     }
   });

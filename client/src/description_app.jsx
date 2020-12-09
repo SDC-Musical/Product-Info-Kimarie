@@ -22,24 +22,28 @@ class DescriptionApp extends React.Component {
   }
 
   componentDidMount() {
+    // Temporary change for localhost
     // const API_URL = process.env.API_URL || 'localhost:3004';
     // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
-
-    // Change for localhost
     /*
     let id = window.location.pathname.substring(10) || '1';
     id = id.replace('/', '');
 
     fetch(`http://3.138.189.215/api/products/${id}`)
     */
-    let id = window.location.pathname.slice(1);
-    console.log(id);
+    let id;
+    if (window.location.pathname === '/') {
+      id = 1;
+    } else {
+      id = window.location.pathname.slice(1);
+    }
+
     fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        const containerObj = data.category;
-        containerObj.brand = data.brand;
-        const categoryBrand = Object.values(containerObj);
+        let categoryBrand = [];
+        categoryBrand.push(data.category_name, data.age_category, data.player_Count, data.brand);
+
         this.setState({
           description: data.description || '',
           categoryBrand: categoryBrand || [],
@@ -48,9 +52,9 @@ class DescriptionApp extends React.Component {
       .catch((err) => {
         console.log('Unable to complete request: ', err);
         const data = staticObj[id - 1];
-        const containerObj = data.category;
-        containerObj.brand = data.brand;
-        const categoryBrand = Object.values(containerObj);
+        let categoryBrand = [];
+        categoryBrand.push(data.category_name, data.age_category, data.player_Count, data.brand);
+
         this.setState({
           description: data.description,
           categoryBrand,
@@ -59,9 +63,7 @@ class DescriptionApp extends React.Component {
   }
 
   render() {
-    const {
-      description, categoryBrand,
-    } = this.state;
+    const { description, categoryBrand } = this.state;
     return (
       <Wrapper>
         <div>
