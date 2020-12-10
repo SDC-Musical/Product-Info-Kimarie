@@ -1,20 +1,49 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
+import { Rate } from 'k6/metrics';
+
+export let errorRate = new Rate('errors');
 
 export let options = {
+  thresholds: {
+    errors: ['rate<0.01'], // <1% errors
+  },
   stages: [
-    { duration: '10s', target: 10 },
-    { duration: '20s', target: 25 },
-    { duration: '10s', target: 50 },
-    { duration: '30s', target: 75 },
-    { duration: '2m', target: 100 },
-    { duration: '1m30s', target: 0 },
+    { duration: '30s', target: 200 },
+    { duration: '2m', target: 500 },
+    { duration: '4m', target: 0 }
   ],
 };
 
 export default function () {
-  let res = http.get('http://localhost:3004/api/products/9888888');
-  check(res, { 'status was 200': (r) => r.status == 200 });
-  check(res, { 'status was 404': (r) => r.status == 404 });
-  sleep(1);
+  const BASE_URL = 'http://localhost:3004';
+
+  let responses = http.batch([
+    [
+      'GET',
+      `${BASE_URL}/api/products/9889999`,
+      null,
+    ],
+    [
+      'GET',
+      `${BASE_URL}/api/products/9890000`,
+      null,
+    ],
+    [
+      'GET',
+      `${BASE_URL}/api/products/9890100`,
+      null,
+    ],
+    [
+      'GET',
+      `${BASE_URL}/api/products/9900000`,
+      null,
+    ],
+  ]);
+
+  const result = check(res, {
+    'status is 200': (r) => r.status == 200,
+  });
+
+  errorRate.add(!result);
 }
