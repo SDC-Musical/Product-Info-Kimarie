@@ -17,33 +17,36 @@ export let options = {
 
 export default function () {
   const BASE_URL = 'http://localhost:3004';
+  let productId = 9699999;
 
   let responses = http.batch([
     [
       'GET',
-      `${BASE_URL}/api/products/9889999`,
+      `${BASE_URL}/api/products/${++productId}`,
       null,
     ],
     [
       'GET',
-      `${BASE_URL}/api/products/9890000`,
+      `${BASE_URL}/api/products/${++productId}`,
       null,
     ],
     [
       'GET',
-      `${BASE_URL}/api/products/9890100`,
+      `${BASE_URL}/api/products/${++productId}`,
       null,
     ],
     [
       'GET',
-      `${BASE_URL}/api/products/9900000`,
+      `${BASE_URL}/api/products/${++productId}`,
       null,
     ],
   ]);
 
-  const result = check(res, {
-    'status is 200': (r) => r.status == 200,
+  const result = check(responses, {
+    'status is 200': (r) => r.status === 200,
   });
+
+  sleep(1);
 
   errorRate.add(!result);
 }
