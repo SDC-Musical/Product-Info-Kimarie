@@ -2,7 +2,7 @@ const mysql = require('mysql');
 const { mySQLUserName, mySQLKey } = require('../keys.js');
 
 const pool = mysql.createPool({
-  connectionLimit: 20,
+  connectionLimit: 10,
   host: 'localhost',
   user: mySQLUserName,
   password: mySQLKey,
