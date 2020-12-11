@@ -35,3 +35,6 @@ database/seed_files/products.csv
 
 # DB Password File
 database/keys.js
+
+# Load/Stress testing files
+_test_/K6
