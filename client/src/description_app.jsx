@@ -37,6 +37,7 @@ class DescriptionApp extends React.Component {
     } else {
       id = window.location.pathname.slice(1);
     }
+    console.log('id:', id);
 
     fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
