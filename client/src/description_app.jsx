@@ -41,6 +41,7 @@ class DescriptionApp extends React.Component {
 
     fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
+      //.then((response) => console.log(response))
       .then((data) => {
         let categoryBrand = [];
         categoryBrand.push(data.category_name, data.age_category, data.player_Count, data.brand);
@@ -79,4 +80,5 @@ class DescriptionApp extends React.Component {
   }
 }
 
-ReactDOM.render(<DescriptionApp />, document.getElementById('description') || document.createElement('div'));
+ReactDOM.render(<DescriptionApp />, document.getElementById('description'));
+//|| document.createElement('div'));

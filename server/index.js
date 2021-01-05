@@ -28,6 +28,8 @@ app.use('/products/:product_id', express.static(client));
 app.use('/', express.static(client));
 
 app.get('*', (req, res) => {
+  console.log('req.params:', req.params);
+  console.log('req.params keys:', Object.keys(req.params));
   if (Object.keys(req.params)[0] !== 'product_id') {
     res.status(404);
   }

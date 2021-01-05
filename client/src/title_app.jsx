@@ -28,20 +28,23 @@ class TitleApp extends React.Component {
     // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
     let count = 0;
     let sumRatings = 0;
-    /*let id = window.location.pathname.substring(10) || '1';
-    id = id.replace('/', '');
-    let reviewID = window.location.pathname.substring(14) || '1';
-    reviewID = reviewID.replace('/', '');
-    fetch(`http://3.138.189.215/api/products/${id}`)
-    */
+    // let id = window.location.pathname.substring(10) || '1';
+    // id = id.replace('/', '');
+    //let reviewID = window.location.pathname.substring(14) || '1';
+    //reviewID = reviewID.replace('/', '');
+    // fetch(`http://3.138.189.215/api/products/${id}`)
+
     let id;
     if (window.location.pathname === '/') {
       id = 1;
     } else {
       id = window.location.pathname.slice(1);
     }
+    //console.log(window.location);
+    console.log('Title id:', id);
 
     fetch(`http://localhost:3004/api/products/${id}`)
+    // fetch(`http://3.138.189.215/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         let newTitle = data.title;
@@ -89,4 +92,5 @@ class TitleApp extends React.Component {
   }
 }
 
-ReactDOM.render(<TitleApp />, document.getElementById('title') || document.createElement('div'));
+ReactDOM.render(<TitleApp />, document.getElementById('title'));
+//  || document.createElement('div'));

@@ -83,4 +83,5 @@ class SpecsApp extends React.Component {
   }
 }
 
-ReactDOM.render(<SpecsApp />, document.getElementById('specs') || document.createElement('div'));
+ReactDOM.render(<SpecsApp />, document.getElementById('specs'));
+//|| document.createElement('div'));
