@@ -41,7 +41,14 @@ class TitleApp extends React.Component {
     }
     console.log('Title id:', id);
 
-    fetch(`http://localhost:3004/api/products/${id}`)
+    if (id < 1 || id > 10000000) {
+      console.log('Unable to complete request. Product number out of range!');
+      const data = staticObj[0];
+      this.setState({
+        title: data.title,
+      });
+    } else {
+      fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         let newTitle = data.title;
@@ -57,6 +64,7 @@ class TitleApp extends React.Component {
           title: data.title,
         });
       });
+    }
 
   // Request to reviews service
   //   fetch(`http://18.222.37.28:3001/api/reviews/${id}`)

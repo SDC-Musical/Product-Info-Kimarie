@@ -40,28 +40,36 @@ class SpecsApp extends React.Component {
     }
     console.log('specs id:', id);
 
-    fetch(`http://localhost:3004/api/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-
-        this.setState({
-          brand: data.brand || '',
-          specsParts: data.part_Number || '',
-          specsGTIN: data.GTIN || 0,
-        });
-      })
-      .catch((err) => {
-        console.log('Unable to complete request: ', err);
-        const data = staticObj[id - 1];
-        const specsParts = data.part_Number;
-        const specsGTIN = data.GTIN;
-
-        this.setState({
-          brand: data.brand,
-          specsParts,
-          specsGTIN,
-        });
+    if (id < 1 || id > 10000000) {
+      console.log('Unable to complete request. Product number out of range!');
+      const data = staticObj[0];
+      this.setState({
+        title: data.title,
       });
+    } else {
+      fetch(`http://localhost:3004/api/products/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+
+          this.setState({
+            brand: data.brand || '',
+            specsParts: data.part_Number || '',
+            specsGTIN: data.GTIN || 0,
+          });
+        })
+        .catch((err) => {
+          console.log('Unable to complete request: ', err);
+          const data = staticObj[id - 1];
+          const specsParts = data.part_Number;
+          const specsGTIN = data.GTIN;
+
+          this.setState({
+            brand: data.brand,
+            specsParts,
+            specsGTIN,
+          });
+        });
+    }
   }
 
   render() {

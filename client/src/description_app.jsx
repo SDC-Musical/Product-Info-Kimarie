@@ -36,28 +36,36 @@ class DescriptionApp extends React.Component {
     }
     console.log('description id:', id);
 
-    fetch(`http://localhost:3004/api/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        let categoryBrand = [];
-        categoryBrand.push(data.category_name, data.age_category, data.player_Count, data.brand);
-
-        this.setState({
-          description: data.description || '',
-          categoryBrand: categoryBrand || [],
-        });
-      })
-      .catch((err) => {
-        console.log('Unable to complete request: ', err);
-        const data = staticObj[id - 1];
-        let categoryBrand = [];
-        categoryBrand.push(data.category_name, data.age_category, data.player_Count, data.brand);
-
-        this.setState({
-          description: data.description,
-          categoryBrand,
-        });
+    if (id < 1 || id > 10000000) {
+      console.log('Unable to complete request. Product number out of range!');
+      const data = staticObj[0];
+      this.setState({
+        title: data.title,
       });
+    } else {
+      fetch(`http://localhost:3004/api/products/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          let categoryBrand = [];
+          categoryBrand.push(data.category_name, data.age_category, data.player_Count, data.brand);
+
+          this.setState({
+            description: data.description || '',
+            categoryBrand: categoryBrand || [],
+          });
+        })
+        .catch((err) => {
+          console.log('Unable to complete request: ', err);
+          const data = staticObj[id - 1];
+          let categoryBrand = [];
+          categoryBrand.push(data.category_name, data.age_category, data.player_Count, data.brand);
+
+          this.setState({
+            description: data.description,
+            categoryBrand,
+          });
+        });
+      }
   }
 
   render() {
