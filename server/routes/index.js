@@ -3,6 +3,7 @@ const controller = require('../controllers');
 
 /* ----------------------- Internal---------- */
 router.get('/products/:product_id', controller.title);
+
 // Use req.query
 router.get('/brand', controller.brand);
 
