@@ -28,20 +28,27 @@ class TitleApp extends React.Component {
     // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
     let count = 0;
     let sumRatings = 0;
-    /*let id = window.location.pathname.substring(10) || '1';
-    id = id.replace('/', '');
-    let reviewID = window.location.pathname.substring(14) || '1';
-    reviewID = reviewID.replace('/', '');
-    fetch(`http://3.138.189.215/api/products/${id}`)
-    */
+    // let id = window.location.pathname.substring(10) || '1';
+    // id = id.replace('/', '');
+    //let reviewID = window.location.pathname.substring(14) || '1';
+    //reviewID = reviewID.replace('/', '');
+
     let id;
     if (window.location.pathname === '/') {
       id = 1;
     } else {
       id = window.location.pathname.slice(1);
     }
+    console.log('Title id:', id);
 
-    fetch(`http://localhost:3004/api/products/${id}`)
+    if (id < 1 || id > 10000000) {
+      console.log('Unable to complete request. Product number out of range!');
+      const data = staticObj[0];
+      this.setState({
+        title: data.title,
+      });
+    } else {
+      fetch(`http://localhost:3004/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         let newTitle = data.title;
@@ -57,6 +64,7 @@ class TitleApp extends React.Component {
           title: data.title,
         });
       });
+    }
 
   // Request to reviews service
   //   fetch(`http://18.222.37.28:3001/api/reviews/${id}`)
@@ -89,4 +97,4 @@ class TitleApp extends React.Component {
   }
 }
 
-ReactDOM.render(<TitleApp />, document.getElementById('title') || document.createElement('div'));
+ReactDOM.render(<TitleApp />, document.getElementById('title'));
