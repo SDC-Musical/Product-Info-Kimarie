@@ -2,6 +2,7 @@ const { mySQLUserName, mySQLKey } = require('../keys.js');
 
 const { Sequelize, DataTypes } = require ('sequelize');
 const db = new Sequelize('google_shopping', mySQLUserName, mySQLKey, {
+  host: '52.53.165.47',
   dialect: 'mysql',
 })
 
