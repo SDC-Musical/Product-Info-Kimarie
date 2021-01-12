@@ -78,7 +78,7 @@ const updateDatabase = (req, res) => {
 
 const deleteEntry = (req, res) => {
   //deleted 37
-  // Change to use req.query.field and req.query.value to allow deletion using fileds other than product id
+  // Eventually change to use req.query.field and req.query.value to allow deletion using fileds other than product id
   const selector = {
     field: 'id',
     fieldValue: req.params.product_id,

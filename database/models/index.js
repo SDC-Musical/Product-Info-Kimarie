@@ -3,7 +3,7 @@ const { mySQLUserName, mySQLKey } = require('../keys.js');
 
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: 'localhost',
+  host: '52.53.165.47',
   user: mySQLUserName,
   password: mySQLKey,
   database: 'google_shopping',
