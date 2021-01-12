@@ -36,7 +36,7 @@ class DescriptionApp extends React.Component {
     }
     console.log('description id:', id);
 
-    if (id < 1 || id > 10000000) {
+    if (id < 1 || id > 10000000 || !id) {
       console.log('Unable to complete request. Product number out of range!');
       const data = staticObj[0];
       this.setState({
@@ -56,7 +56,7 @@ class DescriptionApp extends React.Component {
         })
         .catch((err) => {
           console.log('Unable to complete request: ', err);
-          const data = staticObj[id - 1];
+          const data = staticObj[1];
           let categoryBrand = [];
           categoryBrand.push(data.category_name, data.age_category, data.player_Count, data.brand);
 

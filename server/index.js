@@ -1,10 +1,10 @@
-require('newrelic');
+//require('newrelic');
 const express = require('express');
 const app = express();
 const path = require('path');
 const router = require('./routes/index.js');
 const parser = require('body-parser');
-const morgan = require('morgan');
+//const morgan = require('morgan');
 
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3004;
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 
 app.use('/api', router);
 app.use('/products/:product_id', express.static(client));
