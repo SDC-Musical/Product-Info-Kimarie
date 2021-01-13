@@ -48,7 +48,7 @@ class TitleApp extends React.Component {
         title: data.title,
       });
     } else {
-      fetch(`http://localhost:3004/api/products/${id}`)
+      fetch(`http://172.31.19.56/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         let newTitle = data.title;
