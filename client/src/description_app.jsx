@@ -22,12 +22,6 @@ class DescriptionApp extends React.Component {
   }
 
   componentDidMount() {
-    // const API_URL = process.env.API_URL || 'localhost:3004';
-    // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
-    /*
-    let id = window.location.pathname.substring(10) || '1';
-    id = id.replace('/', '');
-    */
     let id;
     if (window.location.pathname === '/') {
       id = 1;

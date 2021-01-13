@@ -23,15 +23,8 @@ class TitleApp extends React.Component {
   }
 
   componentDidMount() {
-    //Temporary change for local host
-    // const API_URL = process.env.API_URL || 'localhost:3004';
-    // const API_REQUEST = process.env.API_REQUEST || 'localhost:3001';
     let count = 0;
     let sumRatings = 0;
-    // let id = window.location.pathname.substring(10) || '1';
-    // id = id.replace('/', '');
-    //let reviewID = window.location.pathname.substring(14) || '1';
-    //reviewID = reviewID.replace('/', '');
 
     let id;
     if (window.location.pathname === '/') {
