@@ -43,7 +43,7 @@ class DescriptionApp extends React.Component {
         title: data.title,
       });
     } else {
-      fetch(`http://localhost:3004/api/products/${id}`)
+      fetch(`http://18.144.74.123/api/products/${id}`)
         .then((response) => response.json())
         .then((data) => {
           let categoryBrand = [];
