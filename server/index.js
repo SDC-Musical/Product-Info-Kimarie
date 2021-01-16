@@ -28,10 +28,6 @@ app.use('/products/:product_id', express.static(client));
 app.use('/', express.static(client));
 
 app.get('*', (req, res) => {
-  //keeping this until deployed in case it comes back to bite me
-  //if (Object.keys(req.params)[0] !== 'product_id') {
-  //   res.status(404);
-  //}
   res.sendFile(path.join(__dirname, './../client/dist/index.html'));
 });
 
